@@ -1,4 +1,7 @@
 import "./App.css";
+import "./Header.css";
+import "./InputsContainer.css";
+import "./MainArea.css";
 
 export default function App() {
   const patients = [
@@ -10,10 +13,12 @@ export default function App() {
 
   return (
     <>
+      {/* Header */}
       <header id="header">
         <img src="profile-picture.png" alt="profile picture" />
       </header>
 
+      {/* Inputs container */}
       <div id="inputs-container">
         <div className="item">
           <div className="input-container name-filter">
@@ -35,7 +40,8 @@ export default function App() {
         </div>
       </div>
 
-      <main id="main">
+      {/* Main */}
+      <main id="main-area">
         {patients.map((patient) => (
           <div className="row">
             <img src="patient-picture.png" alt="patient picture" />

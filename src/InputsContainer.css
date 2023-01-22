@@ -1,0 +1,44 @@
+#inputs-container {
+    display: flex;
+    background: var(--bg-primary-2);
+    padding: 15px;
+    font-weight: 500;
+}
+
+#inputs-container .item {
+    flex: 1 1 33%;
+    display: flex;
+    justify-content: center;
+}
+
+#inputs-container .name-filter {
+    gap: 0.5rem;
+    width: 15em;
+}
+
+#inputs-container .name-filter input {
+    width: 100%;
+    background: transparent;
+    color: var(--clr-text-light);
+    border: none;
+    outline: none;
+    font: inherit;
+}
+
+#inputs-container .add-patient {
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+#inputs-container .import-export {
+    padding: 0;
+    cursor: pointer;
+}
+
+#inputs-container .import-export>* {
+    padding: var(--input-padding);
+}
+
+#inputs-container .import-export>*:first-child {
+    border-right: var(--border);
+}
