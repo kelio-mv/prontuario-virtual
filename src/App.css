@@ -1,0 +1,108 @@
+/* Classes */
+
+.input-container {
+  display: flex;
+  align-items: center;
+  padding: var(--input-padding);
+  background: var(--bg-primary-1);
+  color: var(--clr-text-light);
+  border: var(--border);
+  border-radius: var(--border-radius);
+  box-shadow: 1px 1px 5px var(--clr-border);
+  user-select: none;
+}
+
+.input-container img {
+  width: 1rem;
+  opacity: 0.5;
+}
+
+/* Header */
+#header {
+  background: var(--bg-secondary-1);
+  padding: 10px;
+}
+
+#header img {
+  display: block;
+  width: 70px;
+  margin: auto;
+  border-radius: 50%;
+}
+
+/* Inputs container */
+#inputs-container {
+  display: flex;
+  background: var(--bg-primary-2);
+  padding: 15px;
+  font-weight: 500;
+}
+
+#inputs-container .item {
+  flex: 1 1 33%;
+  display: flex;
+  justify-content: center;
+}
+
+#inputs-container .name-filter {
+  gap: 0.5rem;
+  width: 15em;
+}
+
+#inputs-container .name-filter input {
+  width: 100%;
+  background: transparent;
+  color: var(--clr-text-light);
+  border: none;
+  outline: none;
+  font: inherit;
+}
+
+#inputs-container .add-patient {
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+#inputs-container .import-export {
+  padding: 0;
+  cursor: pointer;
+}
+
+#inputs-container .import-export>* {
+  padding: var(--input-padding);
+}
+
+#inputs-container .import-export>*:first-child {
+  border-right: var(--border);
+}
+
+/* Main */
+#main {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+#main .row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  background: var(--bg-primary-2);
+  border-radius: var(--border-radius);
+  box-shadow: 1px 1px 5px var(--clr-border);
+}
+
+#main .row img {
+  width: 32px;
+  opacity: 0.5;
+}
+
+#main .row .grow {
+  flex-grow: 1;
+}
+
+#main .row .input-container {
+  cursor: pointer;
+}
