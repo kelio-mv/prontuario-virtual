@@ -1,20 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Gantari:wght@400;500;600&display=swap');
 
 :root {
-    --bg-primary-1: rgb(249, 249, 249);
-    --bg-primary-2: rgb(239, 239, 239);
+    --bg-primary-1: rgb(247, 248, 249);
+    --bg-primary-2: rgb(237, 238, 239);
     --bg-secondary-1: rgb(244, 164, 149);
-    --clr-text-light: #555;
+    --clr-text: #555;
+    --clr-text-light: #999;
     --clr-border: #bbb;
     --border: 1px solid var(--clr-border);
-    --input-padding: 7px 10px;
     --border-radius: 9999px;
+    --input-padding: 7px 11px;
+    --fs-small: 16px;
+    --fs-normal: 17px;
+    --fs-large: 18px;
+    --line-height: 1.25;
 }
 
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    user-select: none;
 }
 
 html,
@@ -24,9 +30,6 @@ body,
 }
 
 html {
-    font: 17px 'Gantari', sans-serif;
-}
-
-#root {
-    background: var(--bg-primary-1);
+    font: var(--fs-normal) 'Gantari', sans-serif;
+    line-height: var(--line-height);
 }

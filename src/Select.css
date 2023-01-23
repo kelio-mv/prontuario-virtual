@@ -1,0 +1,61 @@
+.select {
+    position: relative;
+    padding: var(--input-padding);
+    background: var(--bg-primary-2);
+    border-bottom: 2px solid var(--bg-secondary-1);
+    border-radius: 9px 9px 0px 0px;
+    cursor: pointer;
+}
+
+.select .header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.select .label {
+    color: var(--clr-text-light);
+    font-size: var(--fs-small);
+}
+
+.select .value {
+    color: var(--clr-text);
+}
+
+.select .options {
+    position: absolute;
+    top: calc(100% + 2px);
+    left: 0;
+    min-width: 100%;
+    max-height: 200px;
+    background: var(--clr-text);
+    border-radius: 0px 0px 9px 9px;
+    overflow: auto;
+    z-index: 1;
+}
+
+.select .options p {
+    color: var(--bg-primary-1);
+    padding: 7px 11px;
+}
+
+.select .options p:not(:last-child) {
+    border-bottom: 1px solid rgb(255, 255, 255, 0.1);
+}
+
+.select .options p:hover {
+    background: var(--clr-text-light);
+}
+
+/* Scrollbar */
+.select ::-webkit-scrollbar {
+    width: 6px;
+}
+
+.select ::-webkit-scrollbar-track {
+    background: var(--clr-text-light);
+}
+
+.select ::-webkit-scrollbar-thumb {
+    background: var(--clr-border);
+}

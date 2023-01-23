@@ -1,16 +1,31 @@
+input[type="text"] {
+  min-width: 100%;
+  width: 0;
+  background: transparent;
+  color: var(--clr-text);
+  border: none;
+  outline: none;
+  font: inherit;
+  text-overflow: ellipsis;
+}
+
 .input-container {
   display: flex;
   align-items: center;
+  gap: 0.5rem;
   padding: var(--input-padding);
   background: var(--bg-primary-1);
-  color: var(--clr-text-light);
+  color: var(--clr-text);
   border: var(--border);
   border-radius: var(--border-radius);
   box-shadow: 1px 1px 5px var(--clr-border);
-  user-select: none;
 }
 
 .input-container img {
   width: 1rem;
   opacity: 0.5;
+}
+
+.grow {
+  flex: 1 0 auto;
 }

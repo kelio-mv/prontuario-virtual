@@ -1,0 +1,13 @@
+.text-input-container {
+    display: flex;
+    flex-direction: column;
+    padding: var(--input-padding);
+    background: var(--bg-primary-2);
+    border-bottom: 2px solid var(--bg-secondary-1);
+    border-radius: 9px 9px 0px 0px;
+}
+
+.text-input-container p {
+    color: var(--clr-text-light);
+    font-size: var(--fs-small);
+}
