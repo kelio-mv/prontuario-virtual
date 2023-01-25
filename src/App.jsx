@@ -38,7 +38,7 @@ export default class App extends React.Component {
           </div>
 
           <div
-            className="input-container add-patient"
+            className="add-patient input-container pointer"
             onClick={() => this.setState({ showRegistrationEditor: true })}
           >
             <img src="add-patient.png" alt="add patient" />
@@ -51,12 +51,21 @@ export default class App extends React.Component {
           {this.state.patients.map((p, i) => (
             <div key={i} className="row" onClick={() => this.setState({ selectedPatientId: i })}>
               <img src="patient-picture.png" alt="patient picture" />
-              <p className="name" onClick={() => this.setState({ showMedicalRecord: true })}>
+              <p
+                className="name pointer"
+                onClick={() => this.setState({ showMedicalRecord: true })}
+              >
                 {p.cadastro.nome}
               </p>
               <div className="grow"></div>
-              <div className="input-container">Anamnese</div>
-              <div className="input-container">Evolução</div>
+              <div
+                className="input-container pointer"
+                onClick={() => this.setState({ showRegistrationEditor: true })}
+              >
+                Cadastro
+              </div>
+              <div className="input-container pointer">Anamnese</div>
+              <div className="input-container pointer">Evolução</div>
             </div>
           ))}
         </main>
@@ -65,7 +74,13 @@ export default class App extends React.Component {
         {this.state.showMedicalRecord && (
           <MedicalRecord
             patientId={this.state.selectedPatientId}
-            onClose={() => this.setState({ showMedicalRecord: false })}
+            onClose={() =>
+              this.setState({
+                showMedicalRecord: false,
+                selectedPatientId: null,
+                patients: JSON.parse(localStorage.patients),
+              })
+            }
           />
         )}
 
@@ -73,7 +88,13 @@ export default class App extends React.Component {
         {this.state.showRegistrationEditor && (
           <RegistrationEditor
             patientId={this.state.selectedPatientId}
-            onClose={() => this.setState({ showRegistrationEditor: false })}
+            onClose={() =>
+              this.setState({
+                showRegistrationEditor: false,
+                selectedPatientId: null,
+                patients: JSON.parse(localStorage.patients),
+              })
+            }
           />
         )}
       </>
@@ -84,6 +105,7 @@ export default class App extends React.Component {
 // Trocar variável border-radius para pill
 // Definir border-radius como 9px e definir border-radius dos componentes do modal para a variável
 // Padronizar com classes o TextInput, Select e TextArea
+// Deixar os espaços simétricos no RegistrationForm
 
 // Anamnese:
 // atendimento: {queixaPrincipal, sintomas}

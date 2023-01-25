@@ -5,7 +5,11 @@ import RegistrationForm from "./RegistrationForm";
 export default class RegistrationEditor extends React.Component {
   constructor(props) {
     super();
-    if (props.patientId == undefined) {
+    this.editing = props.patientId != undefined;
+
+    if (this.editing) {
+      this.state = JSON.parse(localStorage.patients)[props.patientId].cadastro;
+    } else {
       this.state = {
         nome: "",
         genero: "",
@@ -19,8 +23,6 @@ export default class RegistrationEditor extends React.Component {
           estado: "",
         },
       };
-    } else {
-      this.state = JSON.parse(localStorage.patients)[props.patientId].cadastro;
     }
   }
 
@@ -41,18 +43,24 @@ export default class RegistrationEditor extends React.Component {
       anamnese: {},
       registroSessoes: {},
     };
-
     const storaged = JSON.parse(localStorage.patients);
-    localStorage.patients = JSON.stringify([...storaged, patient]);
+
+    if (this.editing) {
+      storaged[this.props.patientId] = patient;
+      localStorage.patients = JSON.stringify(storaged);
+    } else {
+      localStorage.patients = JSON.stringify([...storaged, patient]);
+    }
+
     this.props.onClose();
   };
 
   render() {
     return (
       <Modal
-        header={this.props.patientId == undefined ? "Novo Paciente" : "Editar Cadastro"}
+        header={this.editing ? "Editar Cadastro" : "Novo Paciente"}
         footer={
-          <div className="input-container" onClick={this.save}>
+          <div className="input-container pointer" onClick={this.save}>
             Salvar
           </div>
         }

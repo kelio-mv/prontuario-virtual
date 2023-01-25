@@ -21,27 +21,32 @@ export default function RegistrationForm(props) {
           value={props.genero}
           onChange={(value) => props.onChange("genero", value)}
         ></Select>
+
+        <TextInput label="Idade" value="--" />
+      </div>
+
+      <div className="row">
         <TextInput
+          className="grow"
           label="Data de nascimento"
           value={props.nascimento}
           onChange={(value) => props.onChange("nascimento", value)}
         />
-        <TextInput label="Idade" value="--" readOnly />
         <TextInput
           label="Telefone"
           value={props.telefone}
           onChange={(value) => props.onChange("telefone", value)}
-          minWidth="15ch"
+          style={{ minWidth: "22ch" }}
         />
-      </div>
-
-      <div className="row">
         <Select
           label="Grau de escolaridade"
           options={options.escolaridade}
           value={props.escolaridade}
           onChange={(value) => props.onChange("escolaridade", value)}
+          style={{ minWidth: "25ch" }}
         ></Select>
+      </div>
+      <div className="row">
         <TextInput
           className="grow"
           label="Profissão"
