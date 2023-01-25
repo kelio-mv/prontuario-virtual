@@ -20,6 +20,10 @@
     opacity: 0.5;
 }
 
+#main-area .row .name {
+    cursor: pointer;
+}
+
 #main-area .row .input-container {
     cursor: pointer;
 }

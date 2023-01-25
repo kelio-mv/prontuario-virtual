@@ -1,4 +1,5 @@
 import React from "react";
+import MedicalRecord from "./MedicalRecord";
 import RegistrationEditor from "./RegistrationEditor";
 import "./App.css";
 import "./Header.css";
@@ -14,8 +15,11 @@ export default class App extends React.Component {
     super();
     this.state = {
       patients: JSON.parse(localStorage.patients),
+      showMedicalRecord: false,
       showRegistrationEditor: false,
-      showSessionsLog: false,
+      showAnamnesisEditor: false,
+      showSessionsLogEditor: false,
+      selectedPatientId: null,
     };
   }
   render() {
@@ -45,9 +49,11 @@ export default class App extends React.Component {
         {/* Main */}
         <main id="main-area">
           {this.state.patients.map((p, i) => (
-            <div key={i} className="row">
+            <div key={i} className="row" onClick={() => this.setState({ selectedPatientId: i })}>
               <img src="patient-picture.png" alt="patient picture" />
-              <p className="name">{p.cadastro.nome}</p>
+              <p className="name" onClick={() => this.setState({ showMedicalRecord: true })}>
+                {p.cadastro.nome}
+              </p>
               <div className="grow"></div>
               <div className="input-container">Anamnese</div>
               <div className="input-container">Evolução</div>
@@ -55,9 +61,20 @@ export default class App extends React.Component {
           ))}
         </main>
 
+        {/* Medical record */}
+        {this.state.showMedicalRecord && (
+          <MedicalRecord
+            patientId={this.state.selectedPatientId}
+            onClose={() => this.setState({ showMedicalRecord: false })}
+          />
+        )}
+
         {/* Registration editor */}
         {this.state.showRegistrationEditor && (
-          <RegistrationEditor onClose={() => this.setState({ showRegistrationEditor: false })} />
+          <RegistrationEditor
+            patientId={this.state.selectedPatientId}
+            onClose={() => this.setState({ showRegistrationEditor: false })}
+          />
         )}
       </>
     );
@@ -66,6 +83,7 @@ export default class App extends React.Component {
 
 // Trocar variável border-radius para pill
 // Definir border-radius como 9px e definir border-radius dos componentes do modal para a variável
+// Padronizar com classes o TextInput, Select e TextArea
 
 // Anamnese:
 // atendimento: {queixaPrincipal, sintomas}

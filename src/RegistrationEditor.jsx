@@ -4,20 +4,24 @@ import RegistrationForm from "./RegistrationForm";
 
 export default class RegistrationEditor extends React.Component {
   constructor(props) {
-    super(props);
-    this.state = {
-      nome: "",
-      genero: "",
-      nascimento: "",
-      telefone: "",
-      escolaridade: "",
-      profissao: "",
-      estadoCivil: "",
-      endereco: {
-        cidade: "",
-        estado: "",
-      },
-    };
+    super();
+    if (props.patientId == undefined) {
+      this.state = {
+        nome: "",
+        genero: "",
+        nascimento: "",
+        telefone: "",
+        escolaridade: "",
+        profissao: "",
+        estadoCivil: "",
+        endereco: {
+          cidade: "",
+          estado: "",
+        },
+      };
+    } else {
+      this.state = JSON.parse(localStorage.patients)[props.patientId].cadastro;
+    }
   }
 
   onChange = (element, value) => {
@@ -46,7 +50,7 @@ export default class RegistrationEditor extends React.Component {
   render() {
     return (
       <Modal
-        header="Novo Paciente"
+        header={this.props.patientId == undefined ? "Novo Paciente" : "Editar Cadastro"}
         footer={
           <div className="input-container" onClick={this.save}>
             Salvar
