@@ -57,71 +57,13 @@ export default class App extends React.Component {
         </main>
 
         {/* Registration editor */}
-        {this.state.showRegistrationEditor && <RegistrationEditor />}
+        {this.state.showRegistrationEditor && (
+          <RegistrationEditor onClose={() => this.setState({ showRegistrationEditor: false })} />
+        )}
       </>
     );
   }
 }
-
-const cadastro = {
-  nome: "",
-  genero: "",
-  nascimento: "",
-  telefone: "",
-  escolaridade: "",
-  profissao: "",
-  estadoCivil: "",
-  endereco: {
-    cidade: "",
-    estado: "",
-  },
-};
-
-const opcoesCadastro = {
-  genero: ["Masculino", "Feminino"],
-  escolaridade: [
-    "Ensino Fundamental incompleto",
-    "Ensino Fundamental",
-    "Ensino Médio",
-    "Ensino Superior",
-    "Pós-graduação",
-    "Mestrado",
-    "Doutorado",
-    "Pós-doutorado",
-  ],
-  estadoCivil: ["Solteiro", "Casado", "Separado", "Divorciado", "Viúvo"],
-  endereco: {
-    estado: [
-      "AC",
-      "AL",
-      "AP",
-      "AM",
-      "BA",
-      "CE",
-      "DF",
-      "ES",
-      "GO",
-      "MA",
-      "MT",
-      "MS",
-      "MG",
-      "PA",
-      "PB",
-      "PR",
-      "PE",
-      "PI",
-      "RJ",
-      "RN",
-      "RS",
-      "RO",
-      "RR",
-      "SC",
-      "SP",
-      "SE",
-      "TO",
-    ],
-  },
-};
 
 // Anamnese:
 // atendimento: {queixaPrincipal, sintomas}
