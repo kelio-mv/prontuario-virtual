@@ -7,7 +7,12 @@ export default function TextInput(props) {
   return (
     <div className={`text-input-container ${className}`} style={style}>
       <p>{props.label}</p>
-      <input type="text" value={props.value} onChange={(e) => props.onChange(e.target.value)} />
+      <input
+        type="text"
+        value={props.value}
+        onChange={(e) => props.onChange(e.target.value)}
+        readOnly={props.readOnly}
+      />
     </div>
   );
 }

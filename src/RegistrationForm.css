@@ -1,9 +1,9 @@
-#registration-editor .row {
+#registration-form .row {
     display: flex;
     gap: 11px;
 }
 
-#registration-editor .row:not(:last-child) {
+#registration-form .row:not(:last-child) {
     margin-bottom: 11px;
 }
 

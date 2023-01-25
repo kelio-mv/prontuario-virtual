@@ -1,120 +1,72 @@
-// import React from "react";
-// import TextInput from "./TextInput";
-// import Select from "./Select";
-// import "./RegistrationEditor.css";
+import TextInput from "./TextInput";
+import Select from "./Select";
+import allOptions from "./options";
+import "./RegistrationForm.css";
 
-// export default class RegistrationForm extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       nome: "",
-//       genero: "",
-//       nascimento: "",
-//       telefone: "",
-//       escolaridade: "",
-//       profissao: "",
-//       estadoCivil: "",
-//       endereco: {
-//         cidade: "",
-//         estado: "",
-//       },
-//     };
-//     this.options = options.registration;
-//   }
+export default function RegistrationForm(props) {
+  const options = allOptions.cadastro;
 
-//   save = () => {
-//     if (!this.state.nome) {
-//       alert("Por favor, digite o nome do paciente!");
-//       return;
-//     }
+  return (
+    <div id="registration-form">
+      <div className="row">
+        <TextInput
+          className="grow"
+          label="Nome"
+          value={props.nome}
+          onChange={(value) => props.onChange("nome", value)}
+        />
+        <Select
+          label="Gênero"
+          options={options.genero}
+          value={props.genero}
+          onChange={(value) => props.onChange("genero", value)}
+        ></Select>
+        <TextInput
+          label="Data de nascimento"
+          value={props.nascimento}
+          onChange={(value) => props.onChange("nascimento", value)}
+        />
+        <TextInput label="Idade" value="--" readOnly />
+        <TextInput
+          label="Telefone"
+          value={props.telefone}
+          onChange={(value) => props.onChange("telefone", value)}
+          minWidth="15ch"
+        />
+      </div>
 
-//     const patient = {
-//       cadastro: this.state,
-//       anamnese: {},
-//       registroSessoes: {},
-//     };
-
-//     const storaged = JSON.parse(localStorage.patients);
-//     localStorage.patients = JSON.stringify([...storaged, patient]);
-//     this.props.onClose();
-//   };
-
-//   render() {
-//     return (
-//       <Modal
-//         id="registration-editor"
-//         header="Novo Paciente"
-//         footer={
-//           <div className="input-container" onClick={this.save}>
-//             Salvar
-//           </div>
-//         }
-//         onClose={this.props.onClose}
-//       >
-//         <div className="row">
-//           <TextInput
-//             className="grow"
-//             label="Nome"
-//             value={this.state.nome}
-//             onChange={(value) => this.setState({ nome: value })}
-//           />
-//           <Select
-//             label="Gênero"
-//             options={this.options.genero}
-//             value={this.state.genero}
-//             onChange={(value) => this.setState({ genero: value })}
-//           ></Select>
-//           <TextInput
-//             label="Data de nascimento"
-//             value={this.state.nascimento}
-//             onChange={(value) => this.setState({ nascimento: value })}
-//           />
-//           <TextInput label="Idade" value="" />
-//           <TextInput
-//             label="Telefone"
-//             value={this.state.telefone}
-//             onChange={(value) => this.setState({ telefone: value })}
-//             minWidth="15ch"
-//           />
-//         </div>
-
-//         <div className="row">
-//           <Select
-//             label="Grau de escolaridade"
-//             options={this.options.escolaridade}
-//             value={this.state.escolaridade}
-//             onChange={(value) => this.setState({ escolaridade: value })}
-//           ></Select>
-//           <TextInput
-//             className="grow"
-//             label="Profissão"
-//             value={this.state.profissao}
-//             onChange={(value) => this.setState({ profissao: value })}
-//           />
-//           <Select
-//             label="Estado civil"
-//             options={this.options.estadoCivil}
-//             value={this.state.estadoCivil}
-//             onChange={(value) => this.setState({ estadoCivil: value })}
-//           ></Select>
-//           <TextInput
-//             className="grow"
-//             label="Cidade"
-//             value={this.state.endereco.cidade}
-//             onChange={(value) =>
-//               this.setState({ endereco: { ...this.state.endereco, cidade: value } })
-//             }
-//           />
-//           <Select
-//             label="Estado"
-//             options={this.options.endereco.estado}
-//             value={this.state.endereco.estado}
-//             onChange={(value) =>
-//               this.setState({ endereco: { ...this.state.endereco, estado: value } })
-//             }
-//           />
-//         </div>
-//       </Modal>
-//     );
-//   }
-// }
+      <div className="row">
+        <Select
+          label="Grau de escolaridade"
+          options={options.escolaridade}
+          value={props.escolaridade}
+          onChange={(value) => props.onChange("escolaridade", value)}
+        ></Select>
+        <TextInput
+          className="grow"
+          label="Profissão"
+          value={props.profissao}
+          onChange={(value) => props.onChange("profissao", value)}
+        />
+        <Select
+          label="Estado civil"
+          options={options.estadoCivil}
+          value={props.estadoCivil}
+          onChange={(value) => props.onChange("estadoCivil", value)}
+        ></Select>
+        <TextInput
+          className="grow"
+          label="Cidade"
+          value={props.endereco.cidade}
+          onChange={(value) => props.onChange("endereco", { ...props.endereco, cidade: value })}
+        />
+        <Select
+          label="Estado"
+          options={options.endereco.estado}
+          value={props.endereco.estado}
+          onChange={(value) => props.onChange("endereco", { ...props.endereco, estado: value })}
+        />
+      </div>
+    </div>
+  );
+}

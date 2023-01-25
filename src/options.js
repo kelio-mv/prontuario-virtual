@@ -1,6 +1,6 @@
 const options = {
-  // Registration
-  registration: {
+  // Cadastro
+  cadastro: {
     genero: ["Masculino", "Feminino"],
     escolaridade: [
       "Ensino Fundamental incompleto",
