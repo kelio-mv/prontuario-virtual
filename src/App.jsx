@@ -7,17 +7,16 @@ import "./MainArea.css";
 
 export default class App extends React.Component {
   constructor() {
+    if (!localStorage.patients) {
+      localStorage.patients = "[]";
+    }
+
     super();
     this.state = {
+      patients: JSON.parse(localStorage.patients),
       showRegistrationEditor: false,
       showSessionsLog: false,
     };
-    this.patients = [
-      { name: "Késsia Laíse Alves Minervino" },
-      { name: "Kélio Josué Alves Minervino" },
-      { name: "Carlos Vinicius Alves Minervino" },
-      { name: "Carlos Vinicius Alves Minervino" },
-    ];
   }
   render() {
     return (
@@ -45,10 +44,10 @@ export default class App extends React.Component {
 
         {/* Main */}
         <main id="main-area">
-          {this.patients.map((p, i) => (
+          {this.state.patients.map((p, i) => (
             <div key={i} className="row">
               <img src="patient-picture.png" alt="patient picture" />
-              <p className="name">{p.name}</p>
+              <p className="name">{p.cadastro.nome}</p>
               <div className="grow"></div>
               <div className="input-container">Anamnese</div>
               <div className="input-container">Evolução</div>
@@ -64,6 +63,9 @@ export default class App extends React.Component {
     );
   }
 }
+
+// Trocar variável border-radius para pill
+// Definir border-radius como 9px e definir border-radius dos componentes do modal para a variável
 
 // Anamnese:
 // atendimento: {queixaPrincipal, sintomas}

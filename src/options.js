@@ -1,0 +1,50 @@
+const options = {
+  // Registration
+  registration: {
+    genero: ["Masculino", "Feminino"],
+    escolaridade: [
+      "Ensino Fundamental incompleto",
+      "Ensino Fundamental",
+      "Ensino Médio",
+      "Ensino Superior",
+      "Pós-graduação",
+      "Mestrado",
+      "Doutorado",
+      "Pós-doutorado",
+    ],
+    estadoCivil: ["Solteiro", "Casado", "Separado", "Divorciado", "Viúvo"],
+    endereco: {
+      estado: [
+        "AC",
+        "AL",
+        "AP",
+        "AM",
+        "BA",
+        "CE",
+        "DF",
+        "ES",
+        "GO",
+        "MA",
+        "MT",
+        "MS",
+        "MG",
+        "PA",
+        "PB",
+        "PR",
+        "PE",
+        "PI",
+        "RJ",
+        "RN",
+        "RS",
+        "RO",
+        "RR",
+        "SC",
+        "SP",
+        "SE",
+        "TO",
+      ],
+    },
+  },
+};
+
+export default options;
