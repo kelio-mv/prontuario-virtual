@@ -4,15 +4,16 @@
     --bg-primary-1: rgb(247, 248, 249);
     --bg-primary-2: rgb(237, 238, 239);
     --bg-primary-3: rgb(227, 228, 229);
-    --bg-secondary-1: rgb(244, 164, 149);
+    --bg-secondary: rgb(244, 164, 149);
     --clr-text: #555;
     --clr-text-light: #999;
     --clr-text-dark: #333;
     --clr-border: #bbb;
+    --spacing-small: 7px;
+    --input-padding: 7px 11px;
     --border: 1px solid var(--clr-border);
     --border-radius: 9px;
     --pill: 9999px;
-    --input-padding: 7px 11px;
     --fs-small: 16px;
     --fs-normal: 17px;
     --fs-large: 19px;

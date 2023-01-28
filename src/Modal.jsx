@@ -9,9 +9,8 @@ export default function Modal(props) {
       <div className="modal-content">
         {/* Header */}
         <div className="modal-header">
-          <img className="close hidden" src="close.png" />
           {props.header}
-          <img className="close" src="close.png" onClick={props.onClose} />
+          <img className="close-btn" src="close.png" onClick={props.onClose} />
         </div>
         {/* Body */}
         <div className="modal-body">

@@ -15,10 +15,10 @@ export default class AnamnesisEditor extends React.Component {
     return (
       <Modal
         header={
-          <div>
+          <>
             <h1>Anamnese</h1>
             <h2>{this.patientName}</h2>
-          </div>
+          </>
         }
         footer={
           <div className="input-container pointer" onClick={this.save}>

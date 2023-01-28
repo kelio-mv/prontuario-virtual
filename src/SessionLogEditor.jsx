@@ -11,10 +11,10 @@ export default class SessionLogEditor extends React.Component {
     return (
       <Modal
         header={
-          <div>
+          <>
             <h1>Registro de Sessão</h1>
             <h2>{this.patientName}</h2>
-          </div>
+          </>
         }
         onClose={this.props.onClose}
       ></Modal>

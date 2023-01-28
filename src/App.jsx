@@ -4,9 +4,6 @@ import RegistrationEditor from "./RegistrationEditor";
 import AnamnesisEditor from "./AnamnesisEditor";
 import SessionLogEditor from "./SessionLogEditor";
 import "./App.css";
-import "./Header.css";
-import "./InputsContainer.css";
-import "./MainArea.css";
 
 export default class App extends React.Component {
   constructor() {
@@ -117,9 +114,56 @@ export default class App extends React.Component {
 // Redesenhar o RegistrationForm com espaços simétricos
 // Padronizar com classes o TextInput, Select e TextArea
 
-// Anamnese:
-// atendimento: {queixaPrincipal, sintomas}
-// historicoDoenca: {inicio, frequencia, intensidade, tratamentosAnteriores, medicamentos}
-// historicoPessoal: {infancia, rotina, vicios, hobbies, trabalho}
-// historicoFamiliar: {pais, irmaos, conjuge, filhos, lar, historiaPatologicaPregressa}
-// examePsiquico: {aparencia, comportamento, atitude: [cooperativo, resistente, indiferente]}
+const anamnese = {
+  atendimento: {
+    queixaPrincipal: "",
+    sintomas: "",
+  },
+  historicoDoenca: {
+    inicio: "",
+    frequencia: "",
+    intensidade: "",
+    tratamentosAnteriores: "",
+    medicamentos: "",
+  },
+  historicoPessoal: {
+    infancia: "",
+    rotina: "",
+    vicios: "",
+    hobbies: "",
+    trabalho: "",
+    hpp: "",
+  },
+  historicoFamiliar: {
+    pais: "",
+    irmaos: "",
+    conjuge: "",
+    filhos: "",
+    lar: "",
+    hpp: "",
+  },
+  examePsiquico: {
+    aparencia: "",
+    comportamento: "",
+    atitude: [], // cooperativo, resistente, indiferente
+    memoria: "",
+    inteligencia: "",
+    sensopercepcao: "", // normal, alucinação
+    pensamento: {
+      tipo: [], // acelerado, retardado, fuga, bloqueio, prolixo, repetição
+      conteudo: [], // obsessoes, hipocondrias, fobias, delirios, outros
+      expansaoEu: [], // grandeza, ciume, reivindicacao, genealogico, mistico, deificacao, erotico, ...
+      negacaoEu: [], // hipocondriaco, negacaoETransformacaoCorporal, autoacusacao, culpa, ruina, niilismo, tendenciaAoSuicidio, outros
+      afetividade: "",
+      humor: [], // normal, exaltado, baixa de humor, quebra súbita da tonalidade, outros
+      conscienciaDoenca: "", // sim, não, parcial
+      hipoteseDiagnostica: "",
+      _outros: {
+        conteudo: "",
+        expansaoEu: "",
+        negacaoEu: "",
+        humor: "",
+      },
+    },
+  },
+};

@@ -41,7 +41,7 @@ export default class RegistrationEditor extends React.Component {
     const patient = {
       cadastro: this.state,
       anamnese: {},
-      registroSessoes: {},
+      registroDeSessoes: {},
     };
     const storaged = JSON.parse(localStorage.patients);
 
