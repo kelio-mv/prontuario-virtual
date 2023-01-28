@@ -7,7 +7,7 @@ export default function MedicalRecord(props) {
   };
 
   return (
-    <Modal header="Prontuário" onClose={props.onClose}>
+    <Modal header={<h1>Prontuário</h1>} onClose={props.onClose} readOnly>
       <RegistrationForm {...data.registration} />
     </Modal>
   );

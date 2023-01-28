@@ -1,13 +1,11 @@
+import { useContext } from "react";
+import { ModalBodyCtx } from "./Modal";
 import "./TextInput.css";
 
 export default function TextInput(props) {
   const className = props.className || "";
   const style = props.style ? props.style : {};
-  const onChange = (e) => {
-    try {
-      props.onChange(e.target.value);
-    } catch {}
-  };
+  const readOnly = useContext(ModalBodyCtx);
 
   return (
     <div className={`text-input-container ${className}`} style={style}>
@@ -15,8 +13,8 @@ export default function TextInput(props) {
       <input
         type="text"
         value={props.value}
-        onChange={onChange}
-        // readOnly={props.readOnly}
+        onChange={(e) => props.onChange(e.target.value)}
+        readOnly={readOnly}
       />
     </div>
   );

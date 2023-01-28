@@ -17,7 +17,7 @@ input[type="text"] {
   background: var(--bg-primary-1);
   color: var(--clr-text);
   border: var(--border);
-  border-radius: var(--border-radius);
+  border-radius: var(--pill);
   box-shadow: 1px 1px 5px var(--clr-border);
 }
 

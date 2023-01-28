@@ -58,7 +58,7 @@ export default class RegistrationEditor extends React.Component {
   render() {
     return (
       <Modal
-        header={this.editing ? "Editar Cadastro" : "Novo Paciente"}
+        header={<h1>{this.editing ? "Editar Cadastro" : "Novo Paciente"}</h1>}
         footer={
           <div className="input-container pointer" onClick={this.save}>
             Salvar

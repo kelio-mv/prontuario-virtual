@@ -13,26 +13,38 @@
 .modal-content {
     width: 800px;
     max-height: 600px;
-    border-radius: 9px;
+    border-radius: var(--border-radius);
     box-shadow: 0px 0px 10px rgb(0, 0, 0, 0.5);
 }
 
 .modal-header {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    position: relative;
     background: var(--bg-secondary-1);
-    padding: 7px;
+    padding: 7px 0px;
     color: white;
-    font-size: var(--fs-largest);
-    border-radius: 9px 9px 0px 0px;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    text-align: center;
 }
 
-.modal-header .hidden {
-    visibility: hidden;
+.modal-header h1 {
+    font-size: var(--fs-largest);
+    font-weight: 500;
+}
+
+.modal-header h2 {
+    margin-top: 7px;
+    padding-top: 7px;
+    border-top: 1px solid rgb(255, 255, 255, 0.33);
+    font-size: var(--fs-medium);
+    font-weight: 400;
 }
 
 .modal-header .close {
+    position: absolute;
+    top: 7px;
+    right: 7px;
     width: calc(1.25 * var(--fs-largest));
     filter: invert(1);
     cursor: pointer;
@@ -48,5 +60,5 @@
     justify-content: center;
     background: var(--bg-primary-3);
     padding: 7px 0px;
-    border-radius: 0px 0px 9px 9px;
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
 }

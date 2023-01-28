@@ -1,17 +1,14 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { ModalBodyCtx } from "./Modal";
 import "./Select.css";
 
 export default function Select(props) {
   const [showOptions, setShowOptions] = useState(false);
   const style = props.style ? props.style : {};
-  const onChange = (value) => {
-    try {
-      props.onChange(value);
-    } catch {}
-  };
+  const readOnly = useContext(ModalBodyCtx);
 
   return (
-    <div className="select" onClick={() => setShowOptions(!showOptions)} style={style}>
+    <div className="select" onClick={() => !readOnly && setShowOptions(!showOptions)} style={style}>
       <div className="header">
         <p className="label">{props.label}</p>
         <svg width="15" height="8">
@@ -23,7 +20,7 @@ export default function Select(props) {
       {showOptions && props.options && (
         <div className="options">
           {props.options.map((e, i) => (
-            <p key={i} onClick={() => onChange(e)}>
+            <p key={i} onClick={() => props.onChange(e)}>
               {e}
             </p>
           ))}

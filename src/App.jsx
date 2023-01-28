@@ -1,6 +1,8 @@
 import React from "react";
 import MedicalRecord from "./MedicalRecord";
 import RegistrationEditor from "./RegistrationEditor";
+import AnamnesisEditor from "./AnamnesisEditor";
+import SessionLogEditor from "./SessionLogEditor";
 import "./App.css";
 import "./Header.css";
 import "./InputsContainer.css";
@@ -15,13 +17,35 @@ export default class App extends React.Component {
     super();
     this.state = {
       patients: JSON.parse(localStorage.patients),
-      showMedicalRecord: false,
-      showRegistrationEditor: false,
-      showAnamnesisEditor: false,
-      showSessionsLogEditor: false,
+      displayedModal: null,
       selectedPatientId: null,
     };
   }
+
+  getDisplayedModal(args) {
+    switch (this.state.displayedModal) {
+      case "MedicalRecord":
+        return <MedicalRecord {...args} />;
+
+      case "RegistrationEditor":
+        return <RegistrationEditor {...args} />;
+
+      case "AnamnesisEditor":
+        return <AnamnesisEditor {...args} />;
+
+      case "SessionLogEditor":
+        return <SessionLogEditor {...args} />;
+    }
+  }
+
+  closeModal = () => {
+    this.setState({
+      displayedModal: null,
+      selectedPatientId: null,
+      patients: JSON.parse(localStorage.patients),
+    });
+  };
+
   render() {
     return (
       <>
@@ -39,7 +63,7 @@ export default class App extends React.Component {
 
           <div
             className="add-patient input-container pointer"
-            onClick={() => this.setState({ showRegistrationEditor: true })}
+            onClick={() => this.setState({ displayedModal: "RegistrationEditor" })}
           >
             <img src="add-patient.png" alt="add patient" />
             <p>Novo Paciente</p>
@@ -50,62 +74,48 @@ export default class App extends React.Component {
         <main id="main-area">
           {this.state.patients.map((p, i) => (
             <div key={i} className="row" onClick={() => this.setState({ selectedPatientId: i })}>
-              <img src="patient-picture.png" alt="patient picture" />
+              <img src="patient-picture.png" alt="patient" />
               <p
                 className="name pointer"
-                onClick={() => this.setState({ showMedicalRecord: true })}
+                onClick={() => this.setState({ displayedModal: "MedicalRecord" })}
               >
                 {p.cadastro.nome}
               </p>
               <div className="grow"></div>
               <div
                 className="input-container pointer"
-                onClick={() => this.setState({ showRegistrationEditor: true })}
+                onClick={() => this.setState({ displayedModal: "RegistrationEditor" })}
               >
                 Cadastro
               </div>
-              <div className="input-container pointer">Anamnese</div>
-              <div className="input-container pointer">Evolução</div>
+              <div
+                className="input-container pointer"
+                onClick={() => this.setState({ displayedModal: "AnamnesisEditor" })}
+              >
+                Anamnese
+              </div>
+              <div
+                className="input-container pointer"
+                onClick={() => this.setState({ displayedModal: "SessionLogEditor" })}
+              >
+                Evolução
+              </div>
             </div>
           ))}
         </main>
 
-        {/* Medical record */}
-        {this.state.showMedicalRecord && (
-          <MedicalRecord
-            patientId={this.state.selectedPatientId}
-            onClose={() =>
-              this.setState({
-                showMedicalRecord: false,
-                selectedPatientId: null,
-                patients: JSON.parse(localStorage.patients),
-              })
-            }
-          />
-        )}
-
-        {/* Registration editor */}
-        {this.state.showRegistrationEditor && (
-          <RegistrationEditor
-            patientId={this.state.selectedPatientId}
-            onClose={() =>
-              this.setState({
-                showRegistrationEditor: false,
-                selectedPatientId: null,
-                patients: JSON.parse(localStorage.patients),
-              })
-            }
-          />
-        )}
+        {/* Modal */}
+        {this.getDisplayedModal({
+          patientId: this.state.selectedPatientId,
+          onClose: this.closeModal,
+        })}
       </>
     );
   }
 }
 
-// Trocar variável border-radius para pill
-// Definir border-radius como 9px e definir border-radius dos componentes do modal para a variável
+// Redesenhar o RegistrationForm com espaços simétricos
 // Padronizar com classes o TextInput, Select e TextArea
-// Deixar os espaços simétricos no RegistrationForm
 
 // Anamnese:
 // atendimento: {queixaPrincipal, sintomas}

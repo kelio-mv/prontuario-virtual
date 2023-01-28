@@ -10,7 +10,8 @@
     --clr-text-dark: #333;
     --clr-border: #bbb;
     --border: 1px solid var(--clr-border);
-    --border-radius: 9999px;
+    --border-radius: 9px;
+    --pill: 9999px;
     --input-padding: 7px 11px;
     --fs-small: 16px;
     --fs-normal: 17px;
