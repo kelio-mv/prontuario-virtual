@@ -26,11 +26,11 @@ export default class RegistrationEditor extends React.Component {
     }
   }
 
-  onChange = (element, value) => {
-    const obj = {};
-    obj[element] = value;
-    this.setState(obj);
-  };
+  // onChange = (element, value) => {
+  //   const obj = {};
+  //   obj[element] = value;
+  //   this.setState(obj);
+  // };
 
   save = () => {
     if (!this.state.nome) {
@@ -66,7 +66,7 @@ export default class RegistrationEditor extends React.Component {
         }
         onClose={this.props.onClose}
       >
-        <RegistrationForm {...this.state} onChange={this.onChange} />
+        <RegistrationForm {...this.state} onChange={this.setState.bind(this)} />
       </Modal>
     );
   }

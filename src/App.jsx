@@ -14,9 +14,16 @@ export default class App extends React.Component {
     super();
     this.state = {
       patients: JSON.parse(localStorage.patients),
+      nameFilter: "",
       displayedModal: null,
       selectedPatientId: null,
     };
+  }
+
+  getPatients() {
+    return this.state.patients.filter((p) =>
+      p.cadastro.nome.toLowerCase().includes(this.state.nameFilter.trim().toLowerCase())
+    );
   }
 
   getDisplayedModal(args) {
@@ -55,7 +62,16 @@ export default class App extends React.Component {
         <div id="inputs-container">
           <div className="input-container grow">
             <img src="search.png" alt="search patient" />
-            <input type="text" placeholder="Pesquisar..." />
+            <input
+              type="text"
+              placeholder="Pesquisar..."
+              value={this.state.nameFilter}
+              onInput={(e) => {
+                const raw = e.target.value;
+                const value = raw.trim() + (raw.endsWith(" ") && raw.length > 1 ? " " : "");
+                this.setState({ nameFilter: value });
+              }}
+            />
           </div>
 
           <div
@@ -69,7 +85,7 @@ export default class App extends React.Component {
 
         {/* Main */}
         <main id="main-area">
-          {this.state.patients.map((p, i) => (
+          {this.getPatients().map((p, i) => (
             <div key={i} className="row" onClick={() => this.setState({ selectedPatientId: i })}>
               <img src="patient-picture.png" alt="patient" />
               <p
@@ -113,57 +129,3 @@ export default class App extends React.Component {
 
 // Redesenhar o RegistrationForm com espaços simétricos
 // Padronizar com classes o TextInput, Select e TextArea
-
-const anamnese = {
-  atendimento: {
-    queixaPrincipal: "",
-    sintomas: "",
-  },
-  historicoDoenca: {
-    inicio: "",
-    frequencia: "",
-    intensidade: "",
-    tratamentosAnteriores: "",
-    medicamentos: "",
-  },
-  historicoPessoal: {
-    infancia: "",
-    rotina: "",
-    vicios: "",
-    hobbies: "",
-    trabalho: "",
-    hpp: "",
-  },
-  historicoFamiliar: {
-    pais: "",
-    irmaos: "",
-    conjuge: "",
-    filhos: "",
-    lar: "",
-    hpp: "",
-  },
-  examePsiquico: {
-    aparencia: "",
-    comportamento: "",
-    atitude: [], // cooperativo, resistente, indiferente
-    memoria: "",
-    inteligencia: "",
-    sensopercepcao: "", // normal, alucinação
-    pensamento: {
-      tipo: [], // acelerado, retardado, fuga, bloqueio, prolixo, repetição
-      conteudo: [], // obsessoes, hipocondrias, fobias, delirios, outros
-      expansaoEu: [], // grandeza, ciume, reivindicacao, genealogico, mistico, deificacao, erotico, ...
-      negacaoEu: [], // hipocondriaco, negacaoETransformacaoCorporal, autoacusacao, culpa, ruina, niilismo, tendenciaAoSuicidio, outros
-      afetividade: "",
-      humor: [], // normal, exaltado, baixa de humor, quebra súbita da tonalidade, outros
-      conscienciaDoenca: "", // sim, não, parcial
-      hipoteseDiagnostica: "",
-      _outros: {
-        conteudo: "",
-        expansaoEu: "",
-        negacaoEu: "",
-        humor: "",
-      },
-    },
-  },
-};

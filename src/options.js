@@ -45,6 +45,18 @@ const options = {
       ],
     },
   },
+  anamnese: {
+    examePsiquico: {
+      atitude: ["Cooperativa", "Resistente", "Indiferente"],
+      sensopercepcao: ["Normal", "Alucinação"],
+      pensamento: {
+        tipo: ["Acelerado", "Retardado", "Fuga", "Bloqueio", "Prolixo", "Repetiçao"],
+        conteudo: ["Obsessões", "Hipocondrias", "Fobias", "Delírios", "Outros"],
+        humor: ["Normal", "Exaltado", "Baixa de humor", "Quebra súbita", "Outros"],
+        conscienciaDoenca: ["Sim", "Não", "Parcial"],
+      },
+    },
+  },
 };
 
 export default options;

@@ -6,10 +6,3 @@
 #registration-form .row:not(:last-child) {
     margin-bottom: 11px;
 }
-
-/* .modal-body .heading {
-    margin-bottom: 1rem;
-    font-size: var(--fs-large);
-    font-weight: 500;
-    color: var(--clr-text-light);
-} */
