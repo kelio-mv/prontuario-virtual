@@ -5,9 +5,9 @@
     --bg-primary-2: rgb(237, 238, 239);
     --bg-primary-3: rgb(227, 228, 229);
     --bg-secondary: rgb(244, 164, 149);
-    --clr-text: #555;
+    --clr-text: #444;
     --clr-text-light: #999;
-    --clr-text-dark: #333;
+    --clr-text-dark: #222;
     --clr-border: #bbb;
     --spacing-small: 7px;
     --input-padding: 7px 11px;
@@ -35,6 +35,7 @@ body,
 }
 
 html {
+    color: var(--clr-text);
     font: var(--fs-normal) 'Gantari', sans-serif;
     line-height: var(--line-height);
 }

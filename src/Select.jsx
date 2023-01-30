@@ -15,7 +15,7 @@ export default function Select(props) {
           <polygon points="0,0 14,0, 7,7" fill="var(--bg-secondary)" />
         </svg>
       </div>
-      <p className="value">{props.value}</p>
+      <p>{props.value}</p>
 
       {showOptions && props.options && (
         <div className="options">

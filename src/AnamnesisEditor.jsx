@@ -43,16 +43,14 @@ export default class AnamnesisEditor extends React.Component {
         pensamento: {
           tipo: [],
           conteudo: [],
-          afetividade: "",
-          humor: [],
-          conscienciaDoenca: "",
-          hipoteseDiagnostica: "",
-          _outros: {
-            conteudo: "",
-            humor: "",
-          },
+          conteudoOutros: "",
         },
+        afetividade: "",
+        humor: [],
+        humorOutros: "",
+        conscienciaDoenca: "",
       },
+      hipoteseDiagnostica: "",
     };
     this.patientName = JSON.parse(localStorage.patients)[props.patientId].cadastro.nome;
   }

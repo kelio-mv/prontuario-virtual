@@ -184,6 +184,66 @@ export default function AnamnesisForm(props) {
           }
         />
       </section>
+
+      <section>
+        <h2>Exame Psíquico</h2>
+        <TextArea
+          label="Aparência"
+          value={props.examePsiquico.aparencia}
+          onChange={(value) =>
+            props.onChange({
+              examePsiquico: { ...props.examePsiquico, aparencia: value },
+            })
+          }
+        />
+        <TextArea
+          label="Comportamento"
+          value={props.examePsiquico.comportamento}
+          onChange={(value) =>
+            props.onChange({
+              examePsiquico: { ...props.examePsiquico, comportamento: value },
+            })
+          }
+        />
+        <p>...</p>
+        <TextArea
+          label="Memória"
+          value={props.examePsiquico.memoria}
+          onChange={(value) =>
+            props.onChange({
+              examePsiquico: { ...props.examePsiquico, memoria: value },
+            })
+          }
+        />
+        <TextArea
+          label="Inteligência"
+          value={props.examePsiquico.inteligencia}
+          onChange={(value) =>
+            props.onChange({
+              examePsiquico: { ...props.examePsiquico, inteligencia: value },
+            })
+          }
+        />
+        <p>...</p>
+        <TextArea
+          label="Afetividade"
+          value={props.examePsiquico.afetividade}
+          onChange={(value) =>
+            props.onChange({
+              examePsiquico: { ...props.examePsiquico, afetividade: value },
+            })
+          }
+        />
+        <p>...</p>
+      </section>
+
+      <section>
+        <h2>Hipótese Diagnóstica</h2>
+        <TextArea
+          value={props.hipoteseDiagnostica}
+          onChange={(value) => props.onChange({ hipoteseDiagnostica: value })}
+        />
+      </section>
     </div>
   );
 }
