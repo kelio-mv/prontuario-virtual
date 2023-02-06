@@ -6,7 +6,7 @@ export default function TextArea(props) {
     return;
   }
 
-  const rows = props.rows || 4;
+  const rows = props.rows || 3;
 
   return (
     <div className="text-area">
