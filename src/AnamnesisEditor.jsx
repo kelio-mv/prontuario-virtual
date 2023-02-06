@@ -1,5 +1,5 @@
 import React from "react";
-import Modal from "./Modal";
+import Modal from "./utils/Modal";
 import AnamnesisForm from "./AnamnesisForm";
 
 export default class AnamnesisEditor extends React.Component {

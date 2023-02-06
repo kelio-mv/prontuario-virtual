@@ -1,5 +1,5 @@
-import TextArea from "./TextArea";
-import Select from "./Select";
+import TextArea from "./utils/TextArea";
+import Select from "./utils/Select";
 import allOptions from "./options";
 import "./AnamnesisForm.css";
 

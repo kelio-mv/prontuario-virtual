@@ -1,5 +1,5 @@
 import React from "react";
-import Modal from "./Modal";
+import Modal from "./utils/Modal";
 
 export default class SessionLogEditor extends React.Component {
   constructor(props) {

@@ -1,4 +1,4 @@
-import Modal from "./Modal";
+import Modal from "./utils/Modal";
 import RegistrationForm from "./RegistrationForm";
 
 export default function MedicalRecord(props) {

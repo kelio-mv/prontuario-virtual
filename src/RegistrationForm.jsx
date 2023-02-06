@@ -1,5 +1,5 @@
-import TextInput from "./TextInput";
-import DropdownSelect from "./DropdownSelect";
+import TextInput from "./utils/TextInput";
+import DropdownSelect from "./utils/DropdownSelect";
 import allOptions from "./options";
 import "./RegistrationForm.css";
 
