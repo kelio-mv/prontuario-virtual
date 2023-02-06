@@ -2,11 +2,16 @@ import "./Select.css";
 
 export default function Select(props) {
   if (props.multipleSelection == undefined) {
-    console.log("You must set the multipleSelection parameter in the Select component.");
+    console.log("You must set the 'multipleSelection' parameter in the Select component.");
     return;
   }
 
-  const toggleState = (option) => {
+  if (!Array.isArray(props.selected)) {
+    console.log("The 'selected' argument of a Select component must be an array.");
+    return;
+  }
+
+  const handleClick = (option) => {
     if (props.multipleSelection) {
       if (props.selected.includes(option)) {
         props.onChange(props.selected.filter((e) => e !== option));
@@ -19,11 +24,11 @@ export default function Select(props) {
   };
 
   return (
-    <div className="select">
+    <div className="select" style={props.noBorder ? { border: "none" } : {}}>
       <p className="label">{props.label}</p>
       <div className="options">
         {props.options.map((e, i) => (
-          <div key={i} className="option" onClick={() => toggleState(e)}>
+          <div key={i} className="option" onClick={() => handleClick(e)}>
             {props.multipleSelection && <CheckBox checked={props.selected.includes(e)} />}
             {!props.multipleSelection && <RadioBox checked={props.selected.includes(e)} />}
             <p>{e}</p>

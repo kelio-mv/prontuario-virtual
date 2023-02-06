@@ -5,6 +5,8 @@ import AnamnesisForm from "./AnamnesisForm";
 export default class AnamnesisEditor extends React.Component {
   constructor(props) {
     super();
+    const patient = JSON.parse(localStorage.patients)[props.patientId];
+
     this.state = {
       atendimento: {
         queixaPrincipal: "",
@@ -35,26 +37,32 @@ export default class AnamnesisEditor extends React.Component {
       examePsiquico: {
         aparencia: "",
         comportamento: "",
-        atitude: "",
+        atitude: [],
         memoria: "",
         inteligencia: "",
-        sensopercepcao: "",
-        pensamento: {
-          tipo: [],
-          conteudo: [],
-          conteudoOutros: "",
-        },
+        sensopercepcao: [],
+        pensamento: [],
+        conteudoPensamento: [],
+        conteudoPensamentoOutros: "",
         afetividade: "",
         humor: [],
         humorOutros: "",
-        conscienciaDoenca: "",
+        conscienciaDoenca: [],
       },
       hipoteseDiagnostica: "",
     };
-    this.patientName = JSON.parse(localStorage.patients)[props.patientId].cadastro.nome;
+    this.state = { ...this.state, ...patient.anamnese };
+    this.patientName = patient.cadastro.nome;
   }
 
-  save = () => {};
+  save = () => {
+    const allPatients = JSON.parse(localStorage.patients);
+    const patient = allPatients[this.props.patientId];
+
+    allPatients[this.props.patientId] = { ...patient, anamnese: this.state };
+    localStorage.patients = JSON.stringify(allPatients);
+    this.props.onClose();
+  };
 
   render() {
     return (

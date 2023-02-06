@@ -1,7 +1,7 @@
 import TextArea from "./TextArea";
 import Select from "./Select";
-import "./AnamnesisForm.css";
 import allOptions from "./options";
+import "./AnamnesisForm.css";
 
 export default function AnamnesisForm(props) {
   const options = allOptions.anamnese;
@@ -239,31 +239,36 @@ export default function AnamnesisForm(props) {
         <Select
           label="Pensamento"
           multipleSelection={true}
-          options={options.examePsiquico.pensamento.tipo}
-          selected={props.examePsiquico.pensamento.tipo}
+          options={options.examePsiquico.pensamento}
+          selected={props.examePsiquico.pensamento}
           onChange={(selected) =>
-            props.onChange({
-              examePsiquico: {
-                ...props.examePsiquico,
-                pensamento: { ...props.examePsiquico.pensamento, tipo: selected },
-              },
-            })
+            props.onChange({ examePsiquico: { ...props.examePsiquico, pensamento: selected } })
           }
+          noBorder
         />
         <Select
           label="Conteúdo"
           multipleSelection={true}
-          options={options.examePsiquico.pensamento.conteudo}
-          selected={props.examePsiquico.pensamento.conteudo}
+          options={options.examePsiquico.conteudoPensamento}
+          selected={props.examePsiquico.conteudoPensamento}
           onChange={(selected) =>
             props.onChange({
-              examePsiquico: {
-                ...props.examePsiquico,
-                pensamento: { ...props.examePsiquico.pensamento, conteudo: selected },
-              },
+              examePsiquico: { ...props.examePsiquico, conteudoPensamento: selected },
             })
           }
+          noBorder={props.examePsiquico.conteudoPensamento.includes("Outros")}
         />
+        {props.examePsiquico.conteudoPensamento.includes("Outros") && (
+          <TextArea
+            rows="1"
+            value={props.examePsiquico.conteudoPensamentoOutros}
+            onChange={(value) => {
+              props.onChange({
+                examePsiquico: { ...props.examePsiquico, conteudoPensamentoOutros: value },
+              });
+            }}
+          />
+        )}
         <TextArea
           label="Afetividade"
           value={props.examePsiquico.afetividade}
@@ -281,7 +286,19 @@ export default function AnamnesisForm(props) {
           onChange={(selected) =>
             props.onChange({ examePsiquico: { ...props.examePsiquico, humor: selected } })
           }
+          noBorder={props.examePsiquico.humor.includes("Outros")}
         />
+        {props.examePsiquico.humor.includes("Outros") && (
+          <TextArea
+            rows="1"
+            value={props.examePsiquico.humorOutros}
+            onChange={(value) => {
+              props.onChange({
+                examePsiquico: { ...props.examePsiquico, humorOutros: value },
+              });
+            }}
+          />
+        )}
         <Select
           label="Consciência da Doença"
           multipleSelection={false}
@@ -298,7 +315,7 @@ export default function AnamnesisForm(props) {
       <section>
         <h2>Hipótese Diagnóstica</h2>
         <TextArea
-          rows={5}
+          rows="5"
           value={props.hipoteseDiagnostica}
           onChange={(value) => props.onChange({ hipoteseDiagnostica: value })}
         />
