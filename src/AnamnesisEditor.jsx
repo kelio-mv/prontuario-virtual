@@ -30,7 +30,6 @@ export default class AnamnesisEditor extends React.Component {
         irmaos: "",
         conjuge: "",
         filhos: "",
-        lar: "",
         hpp: "",
       },
       examePsiquico: {

@@ -39,3 +39,15 @@ html {
     font: var(--fs-normal) 'Gantari', sans-serif;
     line-height: var(--line-height);
 }
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-primary-3);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--clr-border);
+}

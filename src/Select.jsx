@@ -1,31 +1,43 @@
-import { useState, useContext } from "react";
-import { ModalBodyCtx } from "./Modal";
 import "./Select.css";
 
 export default function Select(props) {
-  const [showOptions, setShowOptions] = useState(false);
-  const style = props.style ? props.style : {};
-  const readOnly = useContext(ModalBodyCtx);
+  if (props.multipleSelection == undefined) {
+    console.log("You must set the multipleSelection parameter in the Select component.");
+    return;
+  }
+
+  const toggleState = (option) => {
+    if (props.multipleSelection) {
+      if (props.selected.includes(option)) {
+        props.onChange(props.selected.filter((e) => e !== option));
+      } else {
+        props.onChange([...props.selected, option]);
+      }
+    } else {
+      props.onChange([option]);
+    }
+  };
 
   return (
-    <div className="select" onClick={() => !readOnly && setShowOptions(!showOptions)} style={style}>
-      <div className="header">
-        <p className="label">{props.label}</p>
-        <svg width="15" height="8">
-          <polygon points="0,0 14,0, 7,7" fill="var(--bg-secondary)" />
-        </svg>
+    <div className="select">
+      <p className="label">{props.label}</p>
+      <div className="options">
+        {props.options.map((e, i) => (
+          <div key={i} className="option" onClick={() => toggleState(e)}>
+            {props.multipleSelection && <CheckBox checked={props.selected.includes(e)} />}
+            {!props.multipleSelection && <RadioBox checked={props.selected.includes(e)} />}
+            <p>{e}</p>
+          </div>
+        ))}
       </div>
-      <p>{props.value}</p>
-
-      {showOptions && props.options && (
-        <div className="options">
-          {props.options.map((e, i) => (
-            <p key={i} onClick={() => props.onChange(e)}>
-              {e}
-            </p>
-          ))}
-        </div>
-      )}
     </div>
   );
+}
+
+function CheckBox(props) {
+  return <div className="checkbox">{props.checked && <img src="check.png" alt="check" />}</div>;
+}
+
+function RadioBox(props) {
+  return <div className="radiobox">{props.checked && <div className="fill" />}</div>;
 }

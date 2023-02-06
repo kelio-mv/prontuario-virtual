@@ -45,6 +45,7 @@ const options = {
       ],
     },
   },
+  // Anamnese
   anamnese: {
     examePsiquico: {
       atitude: ["Cooperativa", "Resistente", "Indiferente"],
@@ -52,9 +53,9 @@ const options = {
       pensamento: {
         tipo: ["Acelerado", "Retardado", "Fuga", "Bloqueio", "Prolixo", "Repetiçao"],
         conteudo: ["Obsessões", "Hipocondrias", "Fobias", "Delírios", "Outros"],
-        humor: ["Normal", "Exaltado", "Baixa de humor", "Quebra súbita", "Outros"],
-        conscienciaDoenca: ["Sim", "Não", "Parcial"],
       },
+      humor: ["Normal", "Exaltado", "Baixa de humor", "Quebra súbita", "Outros"],
+      conscienciaDoenca: ["Sim", "Não", "Parcial"],
     },
   },
 };

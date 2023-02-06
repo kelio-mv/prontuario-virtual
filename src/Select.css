@@ -1,58 +1,52 @@
 .select {
-    position: relative;
-    padding: var(--input-padding);
-    background: var(--bg-primary-2);
-    border-bottom: 1px solid var(--bg-secondary);
-    border-radius: var(--border-radius) var(--border-radius) 0 0;
-    cursor: pointer;
-}
-
-.select .header {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+    margin-bottom: 11px;
+    padding-bottom: 11px;
+    border-bottom: 1px solid var(--bg-primary-3);
 }
 
 .select .label {
     color: var(--clr-text-light);
-    font-size: var(--fs-small);
+    font-weight: 500;
+    margin-bottom: var(--spacing-small);
 }
 
 .select .options {
-    position: absolute;
-    top: calc(100% + 2px);
-    left: 0;
-    min-width: 100%;
-    max-height: 200px;
-    background: var(--bg-primary-1);
-    border-radius: 0 0 var(--border-radius) var(--border-radius);
-    box-shadow: 0px 1px 6px var(--clr-text-dark);
-    overflow: auto;
-    z-index: 1;
+    display: flex;
+    gap: 1rem;
 }
 
-.select .options p {
-    text-align: center;
-    padding: 7px 11px;
+.select .option {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-small);
 }
 
-.select .options p:not(:last-child) {
-    border-bottom: var(--border);
+.select .checkbox,
+.select .radiobox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: calc(1rem + 3px);
+    height: calc(1rem + 3px);
+    background: var(--bg-primary-2);
+    border: 1px solid var(--bg-secondary);
 }
 
-.select .options p:hover {
-    background: var(--bg-primary-3);
+/* Checkbox */
+.select .checkbox img {
+    width: calc(100% - 4px);
+    opacity: 0.5;
 }
 
-/* Scrollbar */
-.select ::-webkit-scrollbar {
-    width: 6px;
+/* Radiobox */
+.select .radiobox {
+    border-radius: 50%;
 }
 
-.select ::-webkit-scrollbar-track {
-    background: var(--clr-border);
-}
-
-.select ::-webkit-scrollbar-thumb {
-    background: var(--clr-text-light);
+.select .radiobox .fill {
+    background: black;
+    opacity: 0.5;
+    width: calc(100% - 4px);
+    height: calc(100% - 4px);
+    border-radius: 50%;
 }

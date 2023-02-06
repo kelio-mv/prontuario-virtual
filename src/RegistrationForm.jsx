@@ -1,5 +1,5 @@
 import TextInput from "./TextInput";
-import Select from "./Select";
+import DropdownSelect from "./DropdownSelect";
 import allOptions from "./options";
 import "./RegistrationForm.css";
 
@@ -15,12 +15,12 @@ export default function RegistrationForm(props) {
           value={props.nome}
           onChange={(value) => props.onChange({ nome: value })}
         />
-        <Select
+        <DropdownSelect
           label="Gênero"
           options={options.genero}
           value={props.genero}
           onChange={(value) => props.onChange({ genero: value })}
-        ></Select>
+        ></DropdownSelect>
 
         <TextInput label="Idade" value="--" />
       </div>
@@ -38,13 +38,13 @@ export default function RegistrationForm(props) {
           onChange={(value) => props.onChange({ telefone: value })}
           style={{ minWidth: "22ch" }}
         />
-        <Select
+        <DropdownSelect
           label="Grau de escolaridade"
           options={options.escolaridade}
           value={props.escolaridade}
           onChange={(value) => props.onChange({ escolaridade: value })}
           style={{ minWidth: "25ch" }}
-        ></Select>
+        ></DropdownSelect>
       </div>
       <div className="row">
         <TextInput
@@ -53,19 +53,19 @@ export default function RegistrationForm(props) {
           value={props.profissao}
           onChange={(value) => props.onChange({ profissao: value })}
         />
-        <Select
+        <DropdownSelect
           label="Estado civil"
           options={options.estadoCivil}
           value={props.estadoCivil}
           onChange={(value) => props.onChange({ estadoCivil: value })}
-        ></Select>
+        ></DropdownSelect>
         <TextInput
           className="grow"
           label="Cidade"
           value={props.endereco.cidade}
           onChange={(value) => props.onChange({ endereco: { ...props.endereco, cidade: value } })}
         />
-        <Select
+        <DropdownSelect
           label="Estado"
           options={options.endereco.estado}
           value={props.endereco.estado}
