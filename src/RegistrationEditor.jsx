@@ -1,14 +1,15 @@
 import React from "react";
 import Modal from "./utils/Modal";
 import RegistrationForm from "./RegistrationForm";
+import storage from "./storage";
 
 export default class RegistrationEditor extends React.Component {
   constructor(props) {
     super();
-    this.editing = props.patientId != undefined;
+    this.editing = props.pid != undefined;
 
     if (this.editing) {
-      this.state = JSON.parse(localStorage.patients)[props.patientId].cadastro;
+      this.state = storage.getPatient(props.pid).cadastro;
     } else {
       this.state = {
         nome: "",
@@ -38,18 +39,12 @@ export default class RegistrationEditor extends React.Component {
       return;
     }
 
-    const patient = {
-      cadastro: this.state,
-      anamnese: {},
-      registroDeSessoes: [],
-    };
-    const storaged = JSON.parse(localStorage.patients);
-
     if (this.editing) {
-      storaged[this.props.patientId] = patient;
-      localStorage.patients = JSON.stringify(storaged);
+      const patientData = storage.getPatient(this.props.pid);
+      patientData.cadastro = this.state;
+      storage.editPatient(this.props.pid, patientData);
     } else {
-      localStorage.patients = JSON.stringify([...storaged, patient]);
+      storage.createPatient(this.state);
     }
 
     this.props.onClose();

@@ -1,12 +1,11 @@
 import React from "react";
 import Modal from "./utils/Modal";
 import AnamnesisForm from "./AnamnesisForm";
+import storage from "./storage";
 
 export default class AnamnesisEditor extends React.Component {
   constructor(props) {
-    super();
-    const patient = JSON.parse(localStorage.patients)[props.patientId];
-
+    super(props);
     this.state = {
       atendimento: {
         queixaPrincipal: "",
@@ -51,16 +50,13 @@ export default class AnamnesisEditor extends React.Component {
       },
       hipoteseDiagnostica: "",
     };
-    this.state = { ...this.state, ...patient.anamnese };
-    this.patientName = patient.cadastro.nome;
+    this.state = { ...this.state, ...storage.getPatient(props.pid).anamnese };
   }
 
   save = () => {
-    const allPatients = JSON.parse(localStorage.patients);
-    const patient = allPatients[this.props.patientId];
-
-    allPatients[this.props.patientId] = { ...patient, anamnese: this.state };
-    localStorage.patients = JSON.stringify(allPatients);
+    const patientData = storage.getPatient(this.props.pid);
+    patientData.anamnese = this.state;
+    storage.editPatient(this.props.pid, patientData);
     this.props.onClose();
   };
 
@@ -70,7 +66,7 @@ export default class AnamnesisEditor extends React.Component {
         header={
           <>
             <h1>Anamnese</h1>
-            <h2>{this.patientName}</h2>
+            <h2>{storage.getPatientName(this.props.pid)}</h2>
           </>
         }
         footer={

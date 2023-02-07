@@ -3,26 +3,25 @@ import MedicalRecord from "./MedicalRecord";
 import RegistrationEditor from "./RegistrationEditor";
 import AnamnesisEditor from "./AnamnesisEditor";
 import SessionLogEditor from "./SessionLogEditor";
+import storage from "./storage";
 import "./App.css";
 
 export default class App extends React.Component {
   constructor() {
-    if (!localStorage.patients) {
-      localStorage.patients = "[]";
-    }
-
+    // The "pid" (Patient Identifier) refers to the location of the selected patient in
+    // the stored list of patients.
     super();
     this.state = {
-      patients: JSON.parse(localStorage.patients),
+      patientsNames: storage.getAllPatientsNames(),
       nameFilter: "",
       displayedModal: null,
-      selectedPatientId: null,
+      pid: null,
     };
   }
 
-  getPatients() {
-    return this.state.patients.filter((p) =>
-      p.cadastro.nome.toLowerCase().includes(this.state.nameFilter.trim().toLowerCase())
+  getFilteredNames() {
+    return this.state.patientsNames.filter((name) =>
+      name.toLowerCase().includes(this.state.nameFilter.trim().toLowerCase())
     );
   }
 
@@ -45,8 +44,8 @@ export default class App extends React.Component {
   closeModal = () => {
     this.setState({
       displayedModal: null,
-      selectedPatientId: null,
-      patients: JSON.parse(localStorage.patients),
+      pid: null,
+      patientsNames: storage.getAllPatientsNames(),
     });
   };
 
@@ -85,14 +84,14 @@ export default class App extends React.Component {
 
         {/* Main */}
         <main id="main-area">
-          {this.getPatients().map((p, i) => (
-            <div key={i} className="row" onClick={() => this.setState({ selectedPatientId: i })}>
+          {this.getFilteredNames().map((name, i) => (
+            <div key={i} className="row" onClick={() => this.setState({ pid: i })}>
               <img src="patient-picture.png" alt="patient" />
               <p
                 className="name pointer"
                 onClick={() => this.setState({ displayedModal: "MedicalRecord" })}
               >
-                {p.cadastro.nome}
+                {name}
               </p>
               <div className="grow"></div>
               <div
@@ -119,7 +118,7 @@ export default class App extends React.Component {
 
         {/* Modal */}
         {this.getDisplayedModal({
-          patientId: this.state.selectedPatientId,
+          pid: this.state.pid,
           onClose: this.closeModal,
         })}
       </>
@@ -127,10 +126,14 @@ export default class App extends React.Component {
   }
 }
 
+// Impedir criação de registro em uma data já existente
+// Ordenar registro de sessões de forma cronológica
 // Redesenhar o RegistrationForm com espaços simétricos
 // Padronizar com classes o TextInput, Select e TextArea
 // Usar o pointer-events ao invés do context para desabilitar eventos de clique e de hover no formulário
-// Criar uma biblioteca para gerenciar os dados do paciente
 
-// const patient = getPatient(2);
-// const allPatients = getAllPatients();
+// const patient = storage.getPatient(pid);
+// patient.setRegistration(data);
+// patient.setAnamnesis(data);
+// patient.createSessionLog(data);
+// patient.editSessionLog(id, data);

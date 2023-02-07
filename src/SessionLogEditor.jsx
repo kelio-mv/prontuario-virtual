@@ -1,6 +1,7 @@
 import React from "react";
 import Modal from "./utils/Modal";
 import SessionLogForm from "./SessionLogForm";
+import storage from "./storage";
 import "./SessionLogEditor.css";
 
 export default class SessionLogEditor extends React.Component {
@@ -12,13 +13,10 @@ export default class SessionLogEditor extends React.Component {
       displayForm: false,
       form: this.getForm(),
     };
-    this.patientName = JSON.parse(localStorage.patients)[props.patientId].cadastro.nome;
   }
 
   getSessionLogs() {
-    const allPatients = JSON.parse(localStorage.patients);
-    const patient = allPatients[this.props.patientId];
-    return patient.registroDeSessoes;
+    return storage.getPatient(this.props.pid).registroDeSessoes;
   }
 
   getForm(sessionLogId) {
@@ -41,7 +39,7 @@ export default class SessionLogEditor extends React.Component {
             className="input-container pointer"
             onClick={() => this.setState({ displayForm: false })}
           >
-            Voltar
+            Cancelar
           </div>
           <div className="input-container pointer" onClick={this.save}>
             Salvar
@@ -66,23 +64,18 @@ export default class SessionLogEditor extends React.Component {
       return;
     }
 
-    const allPatients = JSON.parse(localStorage.patients);
-    const patient = allPatients[this.props.patientId];
-    const patientSessionLogs = patient.registroDeSessoes;
+    const patientData = storage.getPatient(this.props.pid);
     // When the user is creating a new Session log
     if (this.state.sessionLogId == null) {
-      allPatients[this.props.patientId] = {
-        ...patient,
-        registroDeSessoes: [...patientSessionLogs, this.state.form],
-      };
+      patientData.registroDeSessoes = [...patientData.registroDeSessoes, this.state.form];
     }
     // When the user is editing a Session log
     else {
-      allPatients[this.props.patientId].registroDeSessoes[this.state.sessionLogId] =
-        this.state.form;
+      patientData.registroDeSessoes[this.state.sessionLogId] = this.state.form;
     }
+    // Save changes
+    storage.editPatient(this.props.pid, patientData);
 
-    localStorage.patients = JSON.stringify(allPatients);
     this.setState({
       sessionLogs: this.getSessionLogs(),
       sessionLogId: null,
@@ -97,7 +90,7 @@ export default class SessionLogEditor extends React.Component {
         header={
           <>
             <h1>Registro de Sessão</h1>
-            <h2>{this.patientName}</h2>
+            <h2>{storage.getPatientName(this.props.pid)}</h2>
           </>
         }
         footer={this.getFooter()}
