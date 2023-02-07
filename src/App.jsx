@@ -129,3 +129,8 @@ export default class App extends React.Component {
 
 // Redesenhar o RegistrationForm com espaços simétricos
 // Padronizar com classes o TextInput, Select e TextArea
+// Usar o pointer-events ao invés do context para desabilitar eventos de clique e de hover no formulário
+// Criar uma biblioteca para gerenciar os dados do paciente
+
+// const patient = getPatient(2);
+// const allPatients = getAllPatients();

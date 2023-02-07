@@ -10,10 +10,18 @@
     background: rgb(0, 0, 0, 0.5);
 }
 
+.modal.disabled {
+    opacity: 0;
+}
+
 .modal-content {
     width: 800px;
     border-radius: var(--border-radius);
     box-shadow: 0px 0px 10px rgb(0, 0, 0, 0.5);
+}
+
+.modal-content.disabled {
+    transform: translateY(100vh);
 }
 
 .modal-header {
@@ -59,6 +67,7 @@
 .modal-footer {
     display: flex;
     justify-content: center;
+    gap: 1rem;
     background: var(--bg-primary-3);
     padding: var(--spacing-small);
     border-radius: 0 0 var(--border-radius) var(--border-radius);

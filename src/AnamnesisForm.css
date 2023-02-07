@@ -1,4 +1,4 @@
-#anamnesis-form section {
+#anamnesis-form section:not(:last-child) {
     margin-bottom: var(--fs-largest);
 }
 
