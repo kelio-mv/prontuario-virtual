@@ -7,11 +7,20 @@ import "./SessionLogEditor.css";
 export default class SessionLogEditor extends React.Component {
   constructor(props) {
     super(props);
+    // The "slid" (Session Log Identifier) is the index of the selected Session Log in
+    // the stored array of Session Logs of the patient.
     this.state = {
       sessionLogs: this.getSessionLogs(),
-      sessionLogId: null,
+      slid: null,
       displayForm: false,
-      form: this.getForm(),
+      form: null,
+    };
+
+    this.emptyForm = {
+      data: "",
+      temasAbordados: "",
+      tecnicasUtilizadas: "",
+      planejamentoProximaSessao: "",
     };
   }
 
@@ -19,16 +28,8 @@ export default class SessionLogEditor extends React.Component {
     return storage.getPatient(this.props.pid).registroDeSessoes;
   }
 
-  getForm(sessionLogId) {
-    if (sessionLogId == null) {
-      return {
-        data: "",
-        temasAbordados: "",
-        tecnicasUtilizadas: "",
-        planejamentoProximaSessao: "",
-      };
-    }
-    return this.getSessionLogs()[sessionLogId];
+  getSessionLog(slid) {
+    return this.getSessionLogs()[slid];
   }
 
   getFooter() {
@@ -50,7 +51,7 @@ export default class SessionLogEditor extends React.Component {
       return (
         <div
           className="input-container pointer"
-          onClick={() => this.setState({ displayForm: true })}
+          onClick={() => this.setState({ displayForm: true, form: this.emptyForm })}
         >
           Novo
         </div>
@@ -64,23 +65,21 @@ export default class SessionLogEditor extends React.Component {
       return;
     }
 
-    const patientData = storage.getPatient(this.props.pid);
+    const pdata = storage.getPatient(this.props.pid);
     // When the user is creating a new Session log
-    if (this.state.sessionLogId == null) {
-      patientData.registroDeSessoes = [...patientData.registroDeSessoes, this.state.form];
+    if (this.state.slid == null) {
+      pdata.registroDeSessoes = [...pdata.registroDeSessoes, this.state.form];
     }
     // When the user is editing a Session log
     else {
-      patientData.registroDeSessoes[this.state.sessionLogId] = this.state.form;
+      pdata.registroDeSessoes[this.state.slid] = this.state.form;
     }
-    // Save changes
-    storage.editPatient(this.props.pid, patientData);
+    storage.editPatient(this.props.pid, pdata);
 
     this.setState({
       sessionLogs: this.getSessionLogs(),
-      sessionLogId: null,
+      slid: null,
       displayForm: false,
-      form: this.getForm(),
     });
   };
 
@@ -109,7 +108,7 @@ export default class SessionLogEditor extends React.Component {
                 key={i}
                 className="session-log input-container"
                 onClick={() =>
-                  this.setState({ displayForm: true, sessionLogId: i, form: this.getForm(i) })
+                  this.setState({ displayForm: true, slid: i, form: this.getSessionLog(i) })
                 }
               >
                 <p>{e.data.split("-").reverse().join("/")}</p>

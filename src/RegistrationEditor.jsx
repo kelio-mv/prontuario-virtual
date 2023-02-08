@@ -40,9 +40,9 @@ export default class RegistrationEditor extends React.Component {
     }
 
     if (this.editing) {
-      const patientData = storage.getPatient(this.props.pid);
-      patientData.cadastro = this.state;
-      storage.editPatient(this.props.pid, patientData);
+      const pdata = storage.getPatient(this.props.pid);
+      pdata.cadastro = this.state;
+      storage.editPatient(this.props.pid, pdata);
     } else {
       storage.createPatient(this.state);
     }

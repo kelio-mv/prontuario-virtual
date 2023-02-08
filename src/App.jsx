@@ -8,9 +8,9 @@ import "./App.css";
 
 export default class App extends React.Component {
   constructor() {
-    // The "pid" (Patient Identifier) refers to the location of the selected patient in
-    // the stored list of patients.
     super();
+    // The "pid" (Patient Identifier) is the index of the selected patient in
+    // the stored array of patients.
     this.state = {
       patientsNames: storage.getAllPatientsNames(),
       nameFilter: "",
@@ -131,9 +131,3 @@ export default class App extends React.Component {
 // Redesenhar o RegistrationForm com espaços simétricos
 // Padronizar com classes o TextInput, Select e TextArea
 // Usar o pointer-events ao invés do context para desabilitar eventos de clique e de hover no formulário
-
-// const patient = storage.getPatient(pid);
-// patient.setRegistration(data);
-// patient.setAnamnesis(data);
-// patient.createSessionLog(data);
-// patient.editSessionLog(id, data);

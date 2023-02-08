@@ -54,9 +54,9 @@ export default class AnamnesisEditor extends React.Component {
   }
 
   save = () => {
-    const patientData = storage.getPatient(this.props.pid);
-    patientData.anamnese = this.state;
-    storage.editPatient(this.props.pid, patientData);
+    const pdata = storage.getPatient(this.props.pid);
+    pdata.anamnese = this.state;
+    storage.editPatient(this.props.pid, pdata);
     this.props.onClose();
   };
 
