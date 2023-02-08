@@ -10,7 +10,7 @@ export default class SessionLogEditor extends React.Component {
     // The "slid" (Session Log Identifier) is the index of the selected Session Log in
     // the stored array of Session Logs of the patient.
     this.state = {
-      sessionLogs: this.getSessionLogs(),
+      sessionLogs: this.getSortedSessionLogs(),
       slid: null,
       displayForm: false,
       form: null,
@@ -26,6 +26,15 @@ export default class SessionLogEditor extends React.Component {
 
   getSessionLogs() {
     return storage.getPatient(this.props.pid).registroDeSessoes;
+  }
+
+  getSortedSessionLogs() {
+    return this.getSessionLogs()
+      .map((sl, i) => ({ ...sl, id: i }))
+      .sort((sl1, sl2) => {
+        const [t1, t2] = [sl1.data, sl2.data].map((date) => new Date(date).getTime());
+        return t1 - t2;
+      });
   }
 
   getSessionLog(slid) {
@@ -64,6 +73,15 @@ export default class SessionLogEditor extends React.Component {
       alert("Por favor, defina uma data válida!");
       return;
     }
+    if (
+      this.getSessionLogs()
+        .filter((_, i) => i !== this.state.slid)
+        .map((sl) => sl.data)
+        .includes(this.state.form.data)
+    ) {
+      alert("Já existe um registro de sessão nessa data!");
+      return;
+    }
 
     const pdata = storage.getPatient(this.props.pid);
     // When the user is creating a new Session log
@@ -77,8 +95,7 @@ export default class SessionLogEditor extends React.Component {
     storage.editPatient(this.props.pid, pdata);
 
     this.setState({
-      sessionLogs: this.getSessionLogs(),
-      slid: null,
+      sessionLogs: this.getSortedSessionLogs(),
       displayForm: false,
     });
   };
@@ -103,15 +120,15 @@ export default class SessionLogEditor extends React.Component {
         )}
         {!this.state.displayForm && (
           <div id="session-log-editor">
-            {this.state.sessionLogs.map((e, i) => (
+            {this.state.sessionLogs.map((sl) => (
               <div
-                key={i}
+                key={sl.id}
                 className="session-log input-container"
                 onClick={() =>
-                  this.setState({ displayForm: true, slid: i, form: this.getSessionLog(i) })
+                  this.setState({ displayForm: true, slid: sl.id, form: this.getSessionLog(sl.id) })
                 }
               >
-                <p>{e.data.split("-").reverse().join("/")}</p>
+                <p>{sl.data.split("-").reverse().join("/")}</p>
               </div>
             ))}
           </div>

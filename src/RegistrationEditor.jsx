@@ -60,6 +60,7 @@ export default class RegistrationEditor extends React.Component {
           </div>
         }
         onClose={this.props.onClose}
+        modalBodyStyle={{ padding: "3rem 1.5rem", overflow: "visible" }}
       >
         <RegistrationForm {...this.state} onChange={this.setState.bind(this)} />
       </Modal>

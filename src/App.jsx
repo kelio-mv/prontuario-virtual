@@ -126,8 +126,6 @@ export default class App extends React.Component {
   }
 }
 
-// Impedir criação de registro em uma data já existente
-// Ordenar registro de sessões de forma cronológica
 // Redesenhar o RegistrationForm com espaços simétricos
-// Padronizar com classes o TextInput, Select e TextArea
-// Usar o pointer-events ao invés do context para desabilitar eventos de clique e de hover no formulário
+// Consertar bug do overflow no RegistrationEditor
+// Padronizar com classes o TextInput, Select e TextArea (ou não)

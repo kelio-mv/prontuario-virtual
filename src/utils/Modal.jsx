@@ -1,7 +1,4 @@
-import { createContext } from "react";
 import "./Modal.css";
-
-export const ModalBodyCtx = createContext();
 
 export default function Modal(props) {
   return (
@@ -13,8 +10,8 @@ export default function Modal(props) {
           <img className="close-btn" src="close.png" onClick={props.onClose} />
         </div>
         {/* Body */}
-        <div className="modal-body">
-          <ModalBodyCtx.Provider value={props.readOnly}>{props.children}</ModalBodyCtx.Provider>
+        <div className="modal-body" style={props.modalBodyStyle || {}}>
+          {props.children}
         </div>
         {/* Footer */}
         <div className="modal-footer">{props.footer}</div>

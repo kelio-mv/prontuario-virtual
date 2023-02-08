@@ -53,6 +53,12 @@
   font-weight: 500;
 }
 
+/* Medical Record */
+
+#medical-record {
+  pointer-events: none;
+}
+
 /* Session Log Form */
 
 input[type="date"] {
