@@ -1,11 +1,8 @@
 import "./TextInput.css";
 
 export default function TextInput(props) {
-  const className = props.className || "";
-  const style = props.style ? props.style : {};
-
   return (
-    <div className={`text-input-container ${className}`} style={style}>
+    <div className="text-input-container">
       <p>{props.label}</p>
       <input type="text" value={props.value} onChange={(e) => props.onChange(e.target.value)} />
     </div>

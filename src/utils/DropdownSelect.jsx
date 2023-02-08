@@ -3,10 +3,9 @@ import "./DropdownSelect.css";
 
 export default function DropdownSelect(props) {
   const [showOptions, setShowOptions] = useState(false);
-  const style = props.style ? props.style : {};
 
   return (
-    <div className="dropdown-select" onClick={() => setShowOptions(!showOptions)} style={style}>
+    <div className="dropdown-select" onClick={() => setShowOptions(!showOptions)}>
       <div className="header">
         <p className="label">{props.label}</p>
         <svg width="15" height="8">

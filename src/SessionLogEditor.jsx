@@ -2,7 +2,6 @@ import React from "react";
 import Modal from "./utils/Modal";
 import SessionLogForm from "./SessionLogForm";
 import storage from "./storage";
-import "./SessionLogEditor.css";
 
 export default class SessionLogEditor extends React.Component {
   constructor(props) {

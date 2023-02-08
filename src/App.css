@@ -53,27 +53,6 @@
   font-weight: 500;
 }
 
-/* Medical Record */
-
-#medical-record {
-  pointer-events: none;
-}
-
-/* Session Log Form */
-
-input[type="date"] {
-  display: block;
-  margin: auto;
-  margin-bottom: var(--spacing-small);
-  padding: var(--input-padding);
-  background: transparent;
-  color: inherit;
-  border: var(--border);
-  border-radius: var(--pill);
-  outline: none;
-  font: inherit;
-}
-
 /* Reusable styles */
 
 input[type="text"],

@@ -5,6 +5,7 @@ import AnamnesisEditor from "./AnamnesisEditor";
 import SessionLogEditor from "./SessionLogEditor";
 import storage from "./storage";
 import "./App.css";
+import "./ModalBodyElements.css";
 
 export default class App extends React.Component {
   constructor() {
@@ -126,6 +127,6 @@ export default class App extends React.Component {
   }
 }
 
-// Redesenhar o RegistrationForm com espaços simétricos
-// Consertar bug do overflow no RegistrationEditor
 // Padronizar com classes o TextInput, Select e TextArea (ou não)
+// Desabilitar botão salvar enquanto não houver alterações nos editores
+// Quando entrar em um registro de sessão e não houver alterações, exibir voltar ao invés de cancelar

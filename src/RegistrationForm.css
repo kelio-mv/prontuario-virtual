@@ -1,8 +1,0 @@
-#registration-form .row {
-    display: flex;
-    gap: 11px;
-}
-
-#registration-form .row:not(:last-child) {
-    margin-bottom: 11px;
-}

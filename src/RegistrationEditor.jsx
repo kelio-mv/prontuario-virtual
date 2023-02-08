@@ -27,12 +27,6 @@ export default class RegistrationEditor extends React.Component {
     }
   }
 
-  // onChange = (element, value) => {
-  //   const obj = {};
-  //   obj[element] = value;
-  //   this.setState(obj);
-  // };
-
   save = () => {
     if (!this.state.nome) {
       alert("Por favor, digite o nome do paciente!");
@@ -60,7 +54,7 @@ export default class RegistrationEditor extends React.Component {
           </div>
         }
         onClose={this.props.onClose}
-        modalBodyStyle={{ padding: "3rem 1.5rem", overflow: "visible" }}
+        modalBodyStyle={{ paddingBottom: "6rem", overflow: "visible" }}
       >
         <RegistrationForm {...this.state} onChange={this.setState.bind(this)} />
       </Modal>

@@ -1,7 +1,6 @@
 import TextArea from "./utils/TextArea";
 import Select from "./utils/Select";
 import allOptions from "./options";
-import "./AnamnesisForm.css";
 
 export default function AnamnesisForm(props) {
   const options = allOptions.anamnese;

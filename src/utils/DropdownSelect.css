@@ -22,7 +22,7 @@
     position: absolute;
     top: calc(100% + 2px);
     left: 0;
-    min-width: 100%;
+    width: 100%;
     max-height: 200px;
     background: var(--bg-primary-1);
     border-radius: 0 0 var(--border-radius) var(--border-radius);
@@ -32,7 +32,6 @@
 }
 
 .dropdown-select .options p {
-    text-align: center;
     padding: 7px 11px;
 }
 

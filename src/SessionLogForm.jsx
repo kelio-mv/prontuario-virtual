@@ -1,5 +1,4 @@
 import TextArea from "./utils/TextArea";
-// Stylesheets in App.css
 
 export default function SessionLogForm(props) {
   return (
