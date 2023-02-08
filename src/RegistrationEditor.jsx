@@ -7,6 +7,7 @@ export default class RegistrationEditor extends React.Component {
   constructor(props) {
     super();
     this.editing = props.pid != undefined;
+    this.modalRef = React.createRef();
 
     if (this.editing) {
       this.state = storage.getPatient(props.pid).cadastro;
@@ -41,12 +42,13 @@ export default class RegistrationEditor extends React.Component {
       storage.createPatient(this.state);
     }
 
-    this.props.onClose();
+    this.modalRef.current.close();
   };
 
   render() {
     return (
       <Modal
+        ref={this.modalRef}
         header={<h1>{this.editing ? "Editar Cadastro" : "Novo Paciente"}</h1>}
         footer={
           <div className="input-container pointer" onClick={this.save}>

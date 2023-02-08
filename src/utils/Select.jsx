@@ -12,14 +12,20 @@ export default function Select(props) {
   }
 
   const handleClick = (option) => {
+    // Multiple selection
     if (props.multipleSelection) {
       if (props.selected.includes(option)) {
         props.onChange(props.selected.filter((e) => e !== option));
       } else {
         props.onChange([...props.selected, option]);
       }
-    } else {
-      props.onChange([option]);
+    } // Single selection
+    else {
+      if (props.selected.includes(option)) {
+        props.onChange([]);
+      } else {
+        props.onChange([option]);
+      }
     }
   };
 

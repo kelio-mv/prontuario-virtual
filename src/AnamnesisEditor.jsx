@@ -51,18 +51,20 @@ export default class AnamnesisEditor extends React.Component {
       hipoteseDiagnostica: "",
     };
     this.state = { ...this.state, ...storage.getPatient(props.pid).anamnese };
+    this.modalRef = React.createRef();
   }
 
   save = () => {
     const pdata = storage.getPatient(this.props.pid);
     pdata.anamnese = this.state;
     storage.editPatient(this.props.pid, pdata);
-    this.props.onClose();
+    this.modalRef.current.close();
   };
 
   render() {
     return (
       <Modal
+        ref={this.modalRef}
         header={
           <>
             <h1>Anamnese</h1>

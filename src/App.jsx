@@ -127,6 +127,19 @@ export default class App extends React.Component {
   }
 }
 
-// Padronizar com classes o TextInput, Select e TextArea (ou não)
+// Colocar animações
+// Colocar validação de dados no RegistrationEditor
 // Desabilitar botão salvar enquanto não houver alterações nos editores
 // Quando entrar em um registro de sessão e não houver alterações, exibir voltar ao invés de cancelar
+// Integrar com o Drive (otimizar leitura se necessário)
+// Adicionar opção de anexar documentos no paciente
+
+// Padronizar com classes o TextInput, Select e TextArea (ou não)
+// Tornar pago (R$ 15 / mes)
+
+// Tornar cidade um DropdownSelect (opcional)
+// Requisitos:
+// - Caixa de pesquisa nativa opcional para filtragem (tanto em cidade como estado)
+// - Pesquisa lowercase sem acentos
+// - Desabilitar caixa de cidade até que o estado seja selecionado
+// - Ao trocar estado, redefinir a caixa cidade
