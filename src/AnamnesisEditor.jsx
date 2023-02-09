@@ -59,7 +59,7 @@ export default class AnamnesisEditor extends React.Component {
     const disabled = JSON.stringify(this.state) === JSON.stringify(this.initialState);
     return (
       <div
-        className={"input-container " + (disabled ? "disabled" : "pointer")}
+        className={"input-box " + (disabled ? "disabled" : "pointer")}
         onClick={disabled ? () => {} : this.save}
       >
         Salvar

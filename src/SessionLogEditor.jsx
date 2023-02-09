@@ -45,14 +45,11 @@ export default class SessionLogEditor extends React.Component {
       const unchanged = JSON.stringify(this.state.form) === JSON.stringify(this.initialFormState);
       return (
         <>
-          <div
-            className="input-container pointer"
-            onClick={() => this.setState({ displayForm: false })}
-          >
+          <div className="input-box pointer" onClick={() => this.setState({ displayForm: false })}>
             {unchanged ? "Voltar" : "Cancelar"}
           </div>
           <div
-            className={"input-container " + (unchanged ? "disabled" : "pointer")}
+            className={"input-box " + (unchanged ? "disabled" : "pointer")}
             onClick={unchanged ? () => {} : this.save}
           >
             Salvar
@@ -62,7 +59,7 @@ export default class SessionLogEditor extends React.Component {
     } else {
       return (
         <div
-          className="input-container pointer"
+          className="input-box pointer"
           onClick={() => {
             this.initialFormState = this.emptyForm;
             this.setState({ displayForm: true, form: this.initialFormState });
@@ -129,7 +126,7 @@ export default class SessionLogEditor extends React.Component {
             {this.state.sessionLogs.map((sl) => (
               <div
                 key={sl.id}
-                className="session-log input-container"
+                className="session-log input-box"
                 onClick={() => {
                   this.initialFormState = this.getSessionLog(sl.id);
                   this.setState({

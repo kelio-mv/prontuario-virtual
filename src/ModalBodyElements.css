@@ -69,13 +69,18 @@
 
 input[type="date"] {
     display: block;
+    background: transparent;
+    color: inherit;
+    border: none;
+    outline: none;
+    font: inherit;
+    cursor: text;
+}
+
+#session-log-form input[type="date"] {
     margin: auto;
     margin-bottom: var(--spacing-small);
     padding: var(--input-padding);
-    background: transparent;
-    color: inherit;
     border: var(--border);
     border-radius: var(--pill);
-    outline: none;
-    font: inherit;
 }

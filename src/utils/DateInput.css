@@ -1,0 +1,15 @@
+.date-input {
+    padding: var(--input-padding);
+    background: var(--bg-primary-2);
+    border-bottom: 1px solid var(--bg-secondary);
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+.date-input p {
+    color: var(--clr-text-light);
+    font-size: var(--fs-small);
+}
+
+.date-input ::-webkit-calendar-picker-indicator {
+    display: none;
+}

@@ -60,7 +60,7 @@ export default class App extends React.Component {
 
         {/* Inputs container */}
         <div id="inputs-container">
-          <div className="input-container grow">
+          <div className="input-box grow">
             <img src="search.png" alt="search patient" />
             <input
               type="text"
@@ -75,7 +75,7 @@ export default class App extends React.Component {
           </div>
 
           <div
-            className="add-patient input-container pointer"
+            className="add-patient input-box pointer"
             onClick={() => this.setState({ displayedModal: "RegistrationEditor" })}
           >
             <img src="add-patient.png" alt="add patient" />
@@ -96,19 +96,19 @@ export default class App extends React.Component {
               </p>
               <div className="grow"></div>
               <div
-                className="input-container pointer"
+                className="input-box pointer"
                 onClick={() => this.setState({ displayedModal: "RegistrationEditor" })}
               >
                 Cadastro
               </div>
               <div
-                className="input-container pointer"
+                className="input-box pointer"
                 onClick={() => this.setState({ displayedModal: "AnamnesisEditor" })}
               >
                 Anamnese
               </div>
               <div
-                className="input-container pointer"
+                className="input-box pointer"
                 onClick={() => this.setState({ displayedModal: "SessionLogEditor" })}
               >
                 Evolução
@@ -127,13 +127,13 @@ export default class App extends React.Component {
   }
 }
 
-// Colocar validação de dados no RegistrationEditor
 // Fazer tela de Prontuário
 // Integrar com o Drive (fazer chaching)
 // Adicionar opção de anexar documentos no paciente
 // Animação no registro de sessão
 // Padronizar com classes o TextInput, Select e TextArea (ou não)
 // Tornar pago (R$ 20 / mes)
+// Criar componente pro InputBox com state disabled
 
 // Tornar cidade um DropdownSelect (opcional)
 // Requisitos:

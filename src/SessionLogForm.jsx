@@ -2,7 +2,7 @@ import TextArea from "./utils/TextArea";
 
 export default function SessionLogForm(props) {
   return (
-    <>
+    <div id="session-log-form">
       <input
         type="date"
         value={props.data}
@@ -23,6 +23,6 @@ export default function SessionLogForm(props) {
         value={props.planejamentoProximaSessao}
         onChange={(value) => props.onChange({ planejamentoProximaSessao: value })}
       />
-    </>
+    </div>
   );
 }

@@ -71,7 +71,7 @@ textarea {
   resize: none;
 }
 
-.input-container {
+.input-box {
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -82,11 +82,11 @@ textarea {
   box-shadow: 1px 1px 5px var(--clr-border);
 }
 
-.input-container.disabled {
+.input-box.disabled {
   opacity: 0.5;
 }
 
-.input-container img {
+.input-box img {
   width: 1rem;
   opacity: 0.5;
 }
