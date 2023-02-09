@@ -82,6 +82,10 @@ textarea {
   box-shadow: 1px 1px 5px var(--clr-border);
 }
 
+.input-container.disabled {
+  opacity: 0.5;
+}
+
 .input-container img {
   width: 1rem;
   opacity: 0.5;

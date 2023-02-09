@@ -51,7 +51,20 @@ export default class AnamnesisEditor extends React.Component {
       hipoteseDiagnostica: "",
     };
     this.state = { ...this.state, ...storage.getPatient(props.pid).anamnese };
+    this.initialState = { ...this.state };
     this.modalRef = React.createRef();
+  }
+
+  getFooter() {
+    const disabled = JSON.stringify(this.state) === JSON.stringify(this.initialState);
+    return (
+      <div
+        className={"input-container " + (disabled ? "disabled" : "pointer")}
+        onClick={disabled ? () => {} : this.save}
+      >
+        Salvar
+      </div>
+    );
   }
 
   save = () => {
@@ -71,11 +84,7 @@ export default class AnamnesisEditor extends React.Component {
             <h2>{storage.getPatientName(this.props.pid)}</h2>
           </>
         }
-        footer={
-          <div className="input-container pointer" onClick={this.save}>
-            Salvar
-          </div>
-        }
+        footer={this.getFooter()}
         onClose={this.props.onClose}
       >
         <AnamnesisForm {...this.state} onChange={this.setState.bind(this)} />

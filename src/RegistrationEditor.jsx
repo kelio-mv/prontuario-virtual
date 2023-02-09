@@ -26,6 +26,19 @@ export default class RegistrationEditor extends React.Component {
         },
       };
     }
+    this.initialState = { ...this.state };
+  }
+
+  getFooter() {
+    const disabled = JSON.stringify(this.state) === JSON.stringify(this.initialState);
+    return (
+      <div
+        className={"input-container " + (disabled ? "disabled" : "pointer")}
+        onClick={disabled ? () => {} : this.save}
+      >
+        Salvar
+      </div>
+    );
   }
 
   save = () => {
@@ -50,11 +63,7 @@ export default class RegistrationEditor extends React.Component {
       <Modal
         ref={this.modalRef}
         header={<h1>{this.editing ? "Editar Cadastro" : "Novo Paciente"}</h1>}
-        footer={
-          <div className="input-container pointer" onClick={this.save}>
-            Salvar
-          </div>
-        }
+        footer={this.getFooter()}
         onClose={this.props.onClose}
         modalBodyStyle={{ paddingBottom: "6rem", overflow: "visible" }}
       >

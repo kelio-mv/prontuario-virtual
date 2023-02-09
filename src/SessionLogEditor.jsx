@@ -42,15 +42,19 @@ export default class SessionLogEditor extends React.Component {
 
   getFooter() {
     if (this.state.displayForm) {
+      const unchanged = JSON.stringify(this.state.form) === JSON.stringify(this.initialFormState);
       return (
         <>
           <div
             className="input-container pointer"
             onClick={() => this.setState({ displayForm: false })}
           >
-            Cancelar
+            {unchanged ? "Voltar" : "Cancelar"}
           </div>
-          <div className="input-container pointer" onClick={this.save}>
+          <div
+            className={"input-container " + (unchanged ? "disabled" : "pointer")}
+            onClick={unchanged ? () => {} : this.save}
+          >
             Salvar
           </div>
         </>
@@ -59,7 +63,10 @@ export default class SessionLogEditor extends React.Component {
       return (
         <div
           className="input-container pointer"
-          onClick={() => this.setState({ displayForm: true, form: this.emptyForm })}
+          onClick={() => {
+            this.initialFormState = this.emptyForm;
+            this.setState({ displayForm: true, form: this.initialFormState });
+          }}
         >
           Novo
         </div>
@@ -123,9 +130,14 @@ export default class SessionLogEditor extends React.Component {
               <div
                 key={sl.id}
                 className="session-log input-container"
-                onClick={() =>
-                  this.setState({ displayForm: true, slid: sl.id, form: this.getSessionLog(sl.id) })
-                }
+                onClick={() => {
+                  this.initialFormState = this.getSessionLog(sl.id);
+                  this.setState({
+                    displayForm: true,
+                    slid: sl.id,
+                    form: this.initialFormState,
+                  });
+                }}
               >
                 <p>{sl.data.split("-").reverse().join("/")}</p>
               </div>

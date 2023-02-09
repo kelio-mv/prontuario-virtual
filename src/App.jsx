@@ -127,15 +127,13 @@ export default class App extends React.Component {
   }
 }
 
-// Colocar animações
 // Colocar validação de dados no RegistrationEditor
-// Desabilitar botão salvar enquanto não houver alterações nos editores
-// Quando entrar em um registro de sessão e não houver alterações, exibir voltar ao invés de cancelar
-// Integrar com o Drive (otimizar leitura se necessário)
+// Fazer tela de Prontuário
+// Integrar com o Drive (fazer chaching)
 // Adicionar opção de anexar documentos no paciente
-
+// Animação no registro de sessão
 // Padronizar com classes o TextInput, Select e TextArea (ou não)
-// Tornar pago (R$ 15 / mes)
+// Tornar pago (R$ 20 / mes)
 
 // Tornar cidade um DropdownSelect (opcional)
 // Requisitos:
