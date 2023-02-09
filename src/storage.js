@@ -21,10 +21,11 @@ class Storage {
     return this.getPatient(id).cadastro.nome;
   }
 
-  createPatient(regData) {
+  createPatient() {
     const allPatients = this.getAllPatients();
-    const newPatient = { cadastro: regData, anamnese: {}, registroDeSessoes: [] };
+    const newPatient = { cadastro: {}, anamnese: {}, registroDeSessoes: [] };
     localStorage.patients = JSON.stringify([...allPatients, newPatient]);
+    return allPatients.length;
   }
 
   editPatient(id, data) {

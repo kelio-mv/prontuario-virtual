@@ -1,4 +1,4 @@
-.text-area {
+.text-area:not(:last-child) {
     margin-bottom: var(--spacing-small);
 }
 

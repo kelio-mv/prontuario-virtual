@@ -127,13 +127,12 @@ export default class App extends React.Component {
   }
 }
 
-// Fazer tela de Prontuário
+// Desfocar caixa de seleção ao clicar fora dela
+// Animação no registro de sessão
+// Criar componente pro InputBox com state disabled
 // Integrar com o Drive (fazer chaching)
 // Adicionar opção de anexar documentos no paciente
-// Animação no registro de sessão
-// Padronizar com classes o TextInput, Select e TextArea (ou não)
 // Tornar pago (R$ 20 / mes)
-// Criar componente pro InputBox com state disabled
 
 // Tornar cidade um DropdownSelect (opcional)
 // Requisitos:

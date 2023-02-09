@@ -4,6 +4,31 @@
     pointer-events: none;
 }
 
+#medical-record .session-log-form:not(:last-child) {
+    margin-bottom: 1rem;
+}
+
+.mr-section-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: var(--fs-largest);
+}
+
+.mr-section-header:not(:first-child) {
+    margin-top: var(--fs-largest);
+}
+
+.mr-section-header .line {
+    flex: 1;
+    height: 1px;
+    background: var(--clr-border);
+}
+
+.mr-section-header h2 {
+    font-size: var(--fs-largest);
+}
+
 /* Registration Form */
 
 #registration-form .row {
@@ -26,8 +51,8 @@
 }
 
 #anamnesis-form h2 {
-    margin-bottom: 1em;
-    font-size: var(--fs-largest);
+    margin-bottom: 11px;
+    font-size: var(--fs-large);
     font-weight: 500;
     text-align: center;
 }
@@ -35,10 +60,12 @@
 /* Session Log Editor */
 
 #session-log-editor .session-log {
-    margin-bottom: 11px;
     justify-content: center;
     border: 1px solid var(--bg-secondary);
-    cursor: pointer;
+}
+
+#session-log-editor .session-log:not(:last-child) {
+    margin-bottom: 11px;
 }
 
 #session-log-editor .session-log:hover {
@@ -77,7 +104,7 @@ input[type="date"] {
     cursor: text;
 }
 
-#session-log-form input[type="date"] {
+.session-log-form input[type="date"] {
     margin: auto;
     margin-bottom: var(--spacing-small);
     padding: var(--input-padding);

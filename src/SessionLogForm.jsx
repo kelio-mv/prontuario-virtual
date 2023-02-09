@@ -2,7 +2,7 @@ import TextArea from "./utils/TextArea";
 
 export default function SessionLogForm(props) {
   return (
-    <div id="session-log-form">
+    <div className="session-log-form">
       <input
         type="date"
         value={props.data}
