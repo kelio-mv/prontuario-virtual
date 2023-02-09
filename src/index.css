@@ -1,19 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Gantari:wght@400;500;600&display=swap');
 
 :root {
+    /* Backgrounds */
     --bg-primary-1: rgb(247, 248, 249);
     --bg-primary-2: rgb(237, 238, 239);
     --bg-primary-3: rgb(227, 228, 229);
     --bg-secondary: rgb(244, 164, 149);
+    /* Colors */
     --clr-text: #444;
     --clr-text-light: #999;
     --clr-text-dark: #222;
     --clr-border: #bbb;
+    /* Spacings */
     --spacing-small: 7px;
     --input-padding: 7px 11px;
+    /* Borders */
     --border: 1px solid var(--clr-border);
     --border-radius: 9px;
     --pill: 9999px;
+    /* Fonts */
     --fs-small: 16px;
     --fs-normal: 17px;
     --fs-large: 19px;

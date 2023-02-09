@@ -10,12 +10,13 @@ export default function TextArea(props) {
 
   return (
     <div className="text-area">
-      <p>{props.label}</p>
+      <p className="label">{props.label}</p>
       <textarea
+        className="form-input-box"
         rows={rows}
         value={props.value}
         onChange={(e) => props.onChange(e.target.value)}
-      ></textarea>
+      />
     </div>
   );
 }

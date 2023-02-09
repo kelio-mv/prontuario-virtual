@@ -1,21 +1,11 @@
 .dropdown-select {
     position: relative;
-    padding: var(--input-padding);
-    background: var(--bg-primary-2);
-    border-bottom: 1px solid var(--bg-secondary);
-    border-radius: var(--border-radius) var(--border-radius) 0 0;
-    cursor: pointer;
 }
 
 .dropdown-select .header {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-}
-
-.dropdown-select .label {
-    color: var(--clr-text-light);
-    font-size: var(--fs-small);
 }
 
 .dropdown-select .options {
@@ -32,7 +22,7 @@
 }
 
 .dropdown-select .options p {
-    padding: 7px 11px;
+    padding: var(--input-padding);
 }
 
 .dropdown-select .options p:not(:last-child) {

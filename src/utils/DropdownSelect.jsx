@@ -5,7 +5,10 @@ export default function DropdownSelect(props) {
   const [showOptions, setShowOptions] = useState(false);
 
   return (
-    <div className="dropdown-select" onClick={() => setShowOptions(!showOptions)}>
+    <div
+      className="dropdown-select form-input-box pointer"
+      onClick={() => setShowOptions(!showOptions)}
+    >
       <div className="header">
         <p className="label">{props.label}</p>
         <svg width="15" height="8">

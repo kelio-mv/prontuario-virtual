@@ -1,16 +1,9 @@
-.text-area:not(:last-child) {
-    margin-bottom: 11px;
+.text-area {
+    margin-bottom: var(--spacing-small);
 }
 
-.text-area p {
+.text-area .label {
     margin-bottom: var(--spacing-small);
     color: var(--clr-text-light);
     font-weight: 500;
-}
-
-.text-area textarea {
-    padding: var(--input-padding);
-    background: var(--bg-primary-2);
-    border-bottom: 1px solid var(--bg-secondary);
-    border-radius: var(--border-radius) var(--border-radius) 0 0;
 }
