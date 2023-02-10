@@ -128,10 +128,12 @@ export default class App extends React.Component {
 }
 
 // Desfocar caixa de seleção ao clicar fora dela
+// Trocar registroDeSessoes para registrosDeSessao
 // Animação no registro de sessão
 // Criar componente pro InputBox com state disabled
 // Integrar com o Drive (fazer chaching)
 // Adicionar opção de anexar documentos no paciente
+// Adicionar opção imprimir prontuário
 // Tornar pago (R$ 20 / mes)
 
 // Tornar cidade um DropdownSelect (opcional)

@@ -8,6 +8,7 @@ export default class SessionLogEditor extends React.Component {
     super(props);
     // The "slid" (Session Log Identifier) is the index of the selected Session Log in
     // the stored array of Session Logs of the patient.
+    // When the user is creating a new Session Log, the slid value is set to "null".
     this.state = {
       sessionLogs: this.getSortedSessionLogs(),
       slid: null,
@@ -62,7 +63,7 @@ export default class SessionLogEditor extends React.Component {
           className="input-box pointer"
           onClick={() => {
             this.initialFormState = this.emptyForm;
-            this.setState({ displayForm: true, form: this.initialFormState });
+            this.setState({ displayForm: true, form: this.initialFormState, slid: null });
           }}
         >
           Novo

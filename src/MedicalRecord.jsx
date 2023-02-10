@@ -1,4 +1,3 @@
-import React from "react";
 import Modal from "./utils/Modal";
 import RegistrationForm from "./RegistrationForm";
 import AnamnesisForm from "./AnamnesisForm";
@@ -8,7 +7,6 @@ import storage from "./storage";
 export default function MedicalRecord(props) {
   const patient = storage.getPatient(props.pid);
   const displayAnamnesis = JSON.stringify(patient.anamnese) !== "{}";
-  const displaySessionLogs = JSON.stringify(patient.registroDeSessoes) !== "[]";
 
   const getSortedSessionLogs = () => {
     return patient.registroDeSessoes.sort((sl1, sl2) => {
@@ -27,8 +25,9 @@ export default function MedicalRecord(props) {
         {displayAnamnesis && <AnamnesisForm {...patient.anamnese} />}
 
         <MRSectionHeader text="Registros de Sessão" />
-        {displaySessionLogs &&
-          getSortedSessionLogs().map((sl, i) => <SessionLogForm key={i} {...sl} />)}
+        {getSortedSessionLogs().map((sl, i) => (
+          <SessionLogForm key={i} {...sl} />
+        ))}
       </div>
     </Modal>
   );

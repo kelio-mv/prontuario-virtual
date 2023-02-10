@@ -259,7 +259,6 @@ export default function AnamnesisForm(props) {
         />
         {props.examePsiquico.conteudoPensamento.includes("Outros") && (
           <TextArea
-            rows="1"
             value={props.examePsiquico.conteudoPensamentoOutros}
             onChange={(value) => {
               props.onChange({
@@ -289,7 +288,6 @@ export default function AnamnesisForm(props) {
         />
         {props.examePsiquico.humor.includes("Outros") && (
           <TextArea
-            rows="1"
             value={props.examePsiquico.humorOutros}
             onChange={(value) => {
               props.onChange({
@@ -314,7 +312,7 @@ export default function AnamnesisForm(props) {
       <section>
         <h2>Hipótese Diagnóstica</h2>
         <TextArea
-          rows="5"
+          minRows="2"
           value={props.hipoteseDiagnostica}
           onChange={(value) => props.onChange({ hipoteseDiagnostica: value })}
         />
