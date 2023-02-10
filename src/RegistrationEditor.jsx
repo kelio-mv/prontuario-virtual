@@ -3,16 +3,23 @@ import Modal from "./utils/Modal";
 import RegistrationForm from "./RegistrationForm";
 import storage from "./storage";
 
+export const RegEditorCtx = React.createContext();
+
 export default class RegistrationEditor extends React.Component {
   constructor(props) {
-    super();
-    this.editing = props.pid != undefined;
-    this.modalRef = React.createRef();
-
+    super(props);
+    this.state = {
+      // The eventTarget value is a reference to the last clicked DOM element in the Modal.
+      // When a click event is triggered, the eventTarget is changed, which updates the
+      // RegEditorCtx value. The DropdownSelect components gets this value, using useContext.
+      // If the component contains the event target and its options is being displayed, it
+      // closes itself, to behaves like a HTML Select element.
+      eventTarget: null,
+    };
     if (this.editing) {
-      this.state = storage.getPatient(props.pid).cadastro;
+      this.state.form = storage.getPatient(props.pid).cadastro;
     } else {
-      this.state = {
+      this.state.form = {
         nome: "",
         genero: "",
         nascimento: "",
@@ -26,11 +33,13 @@ export default class RegistrationEditor extends React.Component {
         },
       };
     }
-    this.initialState = { ...this.state };
+    this.initialState = { ...this.state.form };
+    this.editing = props.pid != undefined;
+    this.modalRef = React.createRef();
   }
 
   getFooter() {
-    const disabled = JSON.stringify(this.state) === JSON.stringify(this.initialState);
+    const disabled = JSON.stringify(this.state.form) === JSON.stringify(this.initialState);
     return (
       <div
         className={"input-box " + (disabled ? "disabled" : "pointer")}
@@ -68,9 +77,15 @@ export default class RegistrationEditor extends React.Component {
         header={<h1>{this.editing ? "Editar Cadastro" : "Novo Paciente"}</h1>}
         footer={this.getFooter()}
         onClose={this.props.onClose}
+        onClick={(e) => this.setState({ eventTarget: e.target })}
         modalBodyStyle={{ paddingBottom: "6rem", overflow: "visible" }}
       >
-        <RegistrationForm {...this.state} onChange={this.setState.bind(this)} />
+        <RegEditorCtx.Provider value={this.state.eventTarget}>
+          <RegistrationForm
+            {...this.state.form}
+            onChange={(state) => this.setState({ form: { ...this.state.form, ...state } })}
+          />
+        </RegEditorCtx.Provider>
       </Modal>
     );
   }

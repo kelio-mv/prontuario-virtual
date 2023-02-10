@@ -23,7 +23,7 @@ export default class Modal extends React.Component {
 
   render() {
     return (
-      <div ref={this.modalRef} className="modal disabled">
+      <div ref={this.modalRef} className="modal disabled" onClick={this.props.onClick}>
         <div ref={this.modalContentRef} className="modal-content disabled">
           {/* Header */}
           <div className="modal-header">

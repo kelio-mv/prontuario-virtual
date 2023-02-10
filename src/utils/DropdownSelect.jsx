@@ -1,11 +1,22 @@
-import { useState } from "react";
+import { useState, useContext, useRef, useEffect } from "react";
+import { RegEditorCtx } from "../RegistrationEditor";
 import "./DropdownSelect.css";
 
 export default function DropdownSelect(props) {
   const [showOptions, setShowOptions] = useState(false);
+  const selfRef = useRef();
+  const eventTarget = useContext(RegEditorCtx);
+
+  useEffect(() => {
+    // If there was a click event outside of the element and it is currently displaying the options.
+    if (!selfRef.current.contains(eventTarget) && showOptions) {
+      setShowOptions(false);
+    }
+  });
 
   return (
     <div
+      ref={selfRef}
       className="dropdown-select form-input-box pointer"
       onClick={() => setShowOptions(!showOptions)}
     >

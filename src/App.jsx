@@ -127,6 +127,7 @@ export default class App extends React.Component {
   }
 }
 
+// Passar a tesoura em todos os campos da anamnese
 // Desfocar caixa de seleção ao clicar fora dela
 // Animação no registro de sessão
 // Criar componente pro InputBox com state disabled

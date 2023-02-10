@@ -4,12 +4,10 @@ import DropdownSelect from "./utils/DropdownSelect";
 import allOptions from "./options";
 
 export default function RegistrationForm(props) {
-  const options = allOptions.cadastro;
-  const getPatientAge = () => {
+  function getPatientAge() {
     if (!props.nascimento) {
       return "--";
     }
-
     const today = new Date();
     const birth = new Date(props.nascimento);
     const yearDelta = today.getFullYear() - birth.getFullYear();
@@ -19,9 +17,9 @@ export default function RegistrationForm(props) {
 
     const patientAge = timeOffset < 0 ? yearDelta - 1 : yearDelta;
     return patientAge >= 0 && patientAge <= 120 ? patientAge : "--";
-  };
+  }
 
-  const formatPhoneNumber = (value) => {
+  function formatPhoneNumber(value) {
     const number = value.replace(/[^0-9]/g, "");
 
     if (number.length <= 1) {
@@ -36,7 +34,9 @@ export default function RegistrationForm(props) {
     if (number.length > 10) {
       return `(${number.slice(0, 2)}) ${number[2]} ${number.slice(3, 7)}-${number.slice(7, 11)}`;
     }
-  };
+  }
+
+  const options = allOptions.cadastro;
 
   return (
     <div id="registration-form">
