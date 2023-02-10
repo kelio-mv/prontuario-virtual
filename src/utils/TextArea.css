@@ -2,8 +2,12 @@
     margin-bottom: var(--spacing-small);
 }
 
+
 .text-area .label {
-    margin-bottom: var(--spacing-small);
     color: var(--clr-text-light);
     font-weight: 500;
+}
+
+.text-area textarea {
+    padding: var(--spacing-small);
 }

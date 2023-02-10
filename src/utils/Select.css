@@ -1,7 +1,7 @@
 .select {
     margin-bottom: 11px;
     padding-bottom: 11px;
-    border-bottom: 1px solid var(--bg-primary-3);
+    border-bottom: 2px solid var(--bg-primary-3);
 }
 
 .select .label {
@@ -28,8 +28,7 @@
     align-items: center;
     width: calc(1rem + 3px);
     height: calc(1rem + 3px);
-    background: var(--bg-primary-2);
-    border: 1px solid var(--bg-secondary);
+    border: 2px solid var(--bg-secondary);
 }
 
 /* Checkbox */

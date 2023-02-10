@@ -33,7 +33,7 @@
 
 #registration-form .row {
     display: flex;
-    gap: 11px;
+    gap: 1rem;
 }
 
 #registration-form .row:not(:last-child) {

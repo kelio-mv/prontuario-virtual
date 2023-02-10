@@ -9,7 +9,7 @@ export default function MedicalRecord(props) {
   const displayAnamnesis = JSON.stringify(patient.anamnese) !== "{}";
 
   const getSortedSessionLogs = () => {
-    return patient.registroDeSessoes.sort((sl1, sl2) => {
+    return patient.registrosDeSessao.sort((sl1, sl2) => {
       const [t1, t2] = [sl1.data, sl2.data].map((date) => new Date(date).getTime());
       return t1 - t2;
     });

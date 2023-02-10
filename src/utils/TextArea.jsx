@@ -7,8 +7,7 @@ export default function TextArea(props) {
     return;
   }
 
-  const minRows = props.minRows || 1;
-  const [rows, setRows] = useState(minRows);
+  const [rows, setRows] = useState(props.value.split("\n").length);
 
   return (
     <div className="text-area">
@@ -19,8 +18,7 @@ export default function TextArea(props) {
         value={props.value}
         onChange={(e) => {
           props.onChange(e.target.value);
-          const textRows = (e.target.value.match(/\n/g) || []).length + 1;
-          setRows(textRows < minRows ? minRows : textRows);
+          setRows(e.target.value.split("\n").length);
         }}
       />
     </div>

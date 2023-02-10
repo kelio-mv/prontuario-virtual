@@ -23,7 +23,7 @@ class Storage {
 
   createPatient() {
     const allPatients = this.getAllPatients();
-    const newPatient = { cadastro: {}, anamnese: {}, registroDeSessoes: [] };
+    const newPatient = { cadastro: {}, anamnese: {}, registrosDeSessao: [] };
     localStorage.patients = JSON.stringify([...allPatients, newPatient]);
     return allPatients.length;
   }

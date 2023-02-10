@@ -312,7 +312,6 @@ export default function AnamnesisForm(props) {
       <section>
         <h2>Hipótese Diagnóstica</h2>
         <TextArea
-          minRows="2"
           value={props.hipoteseDiagnostica}
           onChange={(value) => props.onChange({ hipoteseDiagnostica: value })}
         />

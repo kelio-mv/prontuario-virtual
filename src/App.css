@@ -93,9 +93,7 @@ textarea {
 
 .form-input-box {
   padding: var(--input-padding);
-  background: var(--bg-primary-2);
-  border-bottom: 1px solid var(--bg-secondary);
-  border-radius: var(--border-radius) var(--border-radius) 0 0;
+  border-bottom: 2px solid var(--bg-secondary);
 }
 
 .form-input-box .label {

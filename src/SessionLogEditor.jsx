@@ -25,7 +25,7 @@ export default class SessionLogEditor extends React.Component {
   }
 
   getSessionLogs() {
-    return storage.getPatient(this.props.pid).registroDeSessoes;
+    return storage.getPatient(this.props.pid).registrosDeSessao;
   }
 
   getSortedSessionLogs() {
@@ -90,11 +90,11 @@ export default class SessionLogEditor extends React.Component {
     const pdata = storage.getPatient(this.props.pid);
     // When the user is creating a new Session log
     if (this.state.slid == null) {
-      pdata.registroDeSessoes = [...pdata.registroDeSessoes, this.state.form];
+      pdata.registrosDeSessao = [...pdata.registrosDeSessao, this.state.form];
     }
     // When the user is editing a Session log
     else {
-      pdata.registroDeSessoes[this.state.slid] = this.state.form;
+      pdata.registrosDeSessao[this.state.slid] = this.state.form;
     }
     storage.editPatient(this.props.pid, pdata);
 

@@ -128,7 +128,6 @@ export default class App extends React.Component {
 }
 
 // Desfocar caixa de seleção ao clicar fora dela
-// Trocar registroDeSessoes para registrosDeSessao
 // Animação no registro de sessão
 // Criar componente pro InputBox com state disabled
 // Integrar com o Drive (fazer chaching)
