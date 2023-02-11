@@ -22,6 +22,7 @@ class Storage {
   }
 
   createPatient() {
+    // Creates a new patient and returns its PID (Patient Identifier)
     const allPatients = this.getAllPatients();
     const newPatient = { cadastro: {}, anamnese: {}, registrosDeSessao: [] };
     localStorage.patients = JSON.stringify([...allPatients, newPatient]);

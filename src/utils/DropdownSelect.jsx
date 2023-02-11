@@ -3,14 +3,14 @@ import { RegEditorCtx } from "../RegistrationEditor";
 import "./DropdownSelect.css";
 
 export default function DropdownSelect(props) {
-  const [showOptions, setShowOptions] = useState(false);
+  const [displayOptions, setDisplayOptions] = useState(false);
   const selfRef = useRef();
   const eventTarget = useContext(RegEditorCtx);
 
   useEffect(() => {
     // If there was a click event outside of the element and it is currently displaying the options.
-    if (!selfRef.current.contains(eventTarget) && showOptions) {
-      setShowOptions(false);
+    if (!selfRef.current.contains(eventTarget) && displayOptions) {
+      setDisplayOptions(false);
     }
   });
 
@@ -18,7 +18,7 @@ export default function DropdownSelect(props) {
     <div
       ref={selfRef}
       className="dropdown-select form-input-box pointer"
-      onClick={() => setShowOptions(!showOptions)}
+      onClick={() => setDisplayOptions(!displayOptions)}
     >
       <div className="header">
         <p className="label">{props.label}</p>
@@ -28,7 +28,7 @@ export default function DropdownSelect(props) {
       </div>
       <p>{props.value}</p>
 
-      {showOptions && (
+      {displayOptions && (
         <div className="options">
           {props.options.map((e, i) => (
             <p key={i} onClick={() => props.onChange(e)}>

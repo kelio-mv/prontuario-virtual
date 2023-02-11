@@ -67,9 +67,20 @@ export default class AnamnesisEditor extends React.Component {
     );
   }
 
+  trimObject(object) {
+    for (let key in object) {
+      if (typeof object[key] === "string") {
+        object[key] = object[key].trim();
+      } else if (typeof object[key] === "object") {
+        this.trimObject(object[key]);
+      }
+    }
+    return object;
+  }
+
   save = () => {
     const pdata = storage.getPatient(this.props.pid);
-    pdata.anamnese = this.state;
+    pdata.anamnese = this.trimObject(this.state);
     storage.editPatient(this.props.pid, pdata);
     this.modalRef.current.close();
   };

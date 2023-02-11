@@ -127,11 +127,11 @@ export default class App extends React.Component {
   }
 }
 
-// Passar a tesoura em todos os campos da anamnese
-// Desfocar caixa de seleção ao clicar fora dela
 // Animação no registro de sessão
 // Criar componente pro InputBox com state disabled
-// Integrar com o Drive (fazer chaching)
+// Remover acentos na pesquisa de pacientes
+// Deletar registros de sessões e pacientes
+// Integrar com o Drive (fazer caching)
 // Adicionar opção de anexar documentos no paciente
 // Adicionar opção imprimir prontuário
 // Tornar pago (R$ 20 / mes)
