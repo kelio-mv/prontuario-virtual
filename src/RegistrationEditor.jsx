@@ -2,12 +2,14 @@ import React from "react";
 import Modal from "./utils/Modal";
 import RegistrationForm from "./RegistrationForm";
 import storage from "./storage";
+import utils from "./utils";
 
 export const RegEditorCtx = React.createContext();
 
 export default class RegistrationEditor extends React.Component {
   constructor(props) {
     super(props);
+    this.editing = props.pid != undefined;
     this.state = {
       // The eventTarget value is a reference to the last clicked DOM element in the Modal.
       // When a click event is triggered, the eventTarget is changed, which updates the
@@ -34,7 +36,6 @@ export default class RegistrationEditor extends React.Component {
       };
     }
     this.initialState = { ...this.state.form };
-    this.editing = props.pid != undefined;
     this.modalRef = React.createRef();
   }
 
@@ -51,19 +52,21 @@ export default class RegistrationEditor extends React.Component {
   }
 
   save = () => {
-    if (!this.state.nome) {
+    const form = utils.trimObject(this.state.form);
+
+    if (!form.nome) {
       alert("Por favor, digite o nome do paciente!");
       return;
     }
 
     if (this.editing) {
       const pdata = storage.getPatient(this.props.pid);
-      pdata.cadastro = this.state;
+      pdata.cadastro = form;
       storage.editPatient(this.props.pid, pdata);
     } else {
       const pid = storage.createPatient();
       const pdata = storage.getPatient(pid);
-      pdata.cadastro = this.state;
+      pdata.cadastro = form;
       storage.editPatient(pid, pdata);
     }
 
