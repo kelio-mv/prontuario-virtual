@@ -4,6 +4,7 @@ import RegistrationEditor from "./RegistrationEditor";
 import AnamnesisEditor from "./AnamnesisEditor";
 import SessionLogEditor from "./SessionLogEditor";
 import storage from "./storage";
+import utils from "./utils";
 import "./App.css";
 import "./ModalBodyElements.css";
 
@@ -21,9 +22,11 @@ export default class App extends React.Component {
   }
 
   getFilteredNames() {
-    return this.state.patientsNames.filter((name) =>
-      name.toLowerCase().includes(this.state.nameFilter.trim().toLowerCase())
-    );
+    return this.state.patientsNames.filter((name) => {
+      name = utils.removeAccents(name).toLowerCase();
+      const nameFilter = utils.removeAccents(this.state.nameFilter).toLowerCase().trim();
+      return name.includes(nameFilter);
+    });
   }
 
   getDisplayedModal(args) {
@@ -128,14 +131,13 @@ export default class App extends React.Component {
 }
 
 // Animação no registro de sessão
-// Criar componente pro InputBox com state disabled
-// Remover acentos na pesquisa de pacientes
 // Deletar registros de sessões e pacientes
 // Integrar com o Drive (fazer caching)
 // Adicionar opção de anexar documentos no paciente
 // Adicionar opção imprimir prontuário
 // Tornar pago (R$ 20 / mes)
 
+// Criar componente pro InputBox se for necessário outro botão com state disabled
 // Tornar cidade um DropdownSelect (opcional)
 // Requisitos:
 // - Caixa de pesquisa nativa opcional para filtragem (tanto em cidade como estado)
