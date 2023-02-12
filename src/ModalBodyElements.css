@@ -59,20 +59,20 @@
 
 /* Session Log Editor */
 
-#session-log-editor .session-log {
+#session-logs-viewer .session-log {
     justify-content: center;
     border: 1px solid var(--bg-secondary);
 }
 
-#session-log-editor .session-log:not(:last-child) {
+#session-logs-viewer .session-log:not(:last-child) {
     margin-bottom: 11px;
 }
 
-#session-log-editor .session-log:hover {
+#session-logs-viewer .session-log:hover {
     background: var(--bg-primary-2);
 }
 
-#session-log-editor .session-log p {
+#session-logs-viewer .session-log p {
     color: var(--clr-text-light);
     font-size: var(--fs-large);
 }

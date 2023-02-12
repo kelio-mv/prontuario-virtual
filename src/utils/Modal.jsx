@@ -31,7 +31,11 @@ export default class Modal extends React.Component {
             <img className="close-btn" src="close.png" onClick={this.close} />
           </div>
           {/* Body */}
-          <div className="modal-body" style={this.props.modalBodyStyle || {}}>
+          <div
+            ref={this.props.modalBodyRef}
+            className="modal-body"
+            style={this.props.modalBodyStyle || {}}
+          >
             {this.props.children}
           </div>
           {/* Footer */}

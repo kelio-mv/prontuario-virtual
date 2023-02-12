@@ -16,13 +16,51 @@ export default class SessionLogEditor extends React.Component {
       displayForm: false,
       form: null,
     };
-
     this.emptyForm = {
       data: "",
       temasAbordados: "",
       tecnicasUtilizadas: "",
       planejamentoProximaSessao: "",
     };
+    this.modalBodyRef = React.createRef();
+  }
+
+  componentDidMount() {
+    this.modalBodyHeight = this.modalBodyRef.current.offsetHeight;
+  }
+
+  componentDidUpdate(_, prevState) {
+    if (this.state.displayForm !== prevState.displayForm) {
+      const modalBody = this.modalBodyRef.current;
+      const [prevHeight, currHeight] = [this.modalBodyHeight, modalBody.offsetHeight];
+      this.modalBodyHeight = currHeight;
+
+      if (currHeight > prevHeight) {
+        requestAnimationFrame(() => {
+          modalBody.style.maxHeight = `${prevHeight}px`;
+          setTimeout(() => {
+            modalBody.style.transition = "0.33s";
+            modalBody.style.maxHeight = `${currHeight}px`;
+            setTimeout(() => {
+              modalBody.style.maxHeight = null;
+              modalBody.style.transition = null;
+            }, 330);
+          });
+        });
+      } else if (currHeight < prevHeight) {
+        requestAnimationFrame(() => {
+          modalBody.style.minHeight = `${prevHeight}px`;
+          setTimeout(() => {
+            modalBody.style.transition = "0.33s";
+            modalBody.style.minHeight = `${currHeight}px`;
+            setTimeout(() => {
+              modalBody.style.minHeight = null;
+              modalBody.style.transition = null;
+            }, 330);
+          });
+        });
+      }
+    }
   }
 
   getSessionLogs() {
@@ -116,6 +154,7 @@ export default class SessionLogEditor extends React.Component {
         }
         footer={this.getFooter()}
         onClose={this.props.onClose}
+        modalBodyRef={this.modalBodyRef}
       >
         {this.state.displayForm && (
           <SessionLogForm
@@ -124,7 +163,7 @@ export default class SessionLogEditor extends React.Component {
           />
         )}
         {!this.state.displayForm && (
-          <div id="session-log-editor">
+          <div id="session-logs-viewer">
             {this.state.sessionLogs.map((sl) => (
               <div
                 key={sl.id}
@@ -147,3 +186,8 @@ export default class SessionLogEditor extends React.Component {
     );
   }
 }
+
+// Ao alternar o estado do displayForm: salvar height atual
+// componentDidUpdate: se o estado do displayForm alterou, calcule a diferença de altura
+// Se tiver aumentado, defina o maxHeight para o prevHeight, e depois para a altura atual
+// Se tiver diminuído, use o MinHeight.
