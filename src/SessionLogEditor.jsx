@@ -10,6 +10,8 @@ export default class SessionLogEditor extends React.Component {
     // The "slid" (Session Log Identifier) is the index of the selected Session Log in
     // the stored array of Session Logs of the patient.
     // When the user is creating a new Session Log, the slid value is set to "null".
+    // The modal body ref and the lifecycle functions are being used for animating the
+    // trasition between the session log viewer and the session log form.
     this.state = {
       sessionLogs: this.getSortedSessionLogs(),
       slid: null,
@@ -38,9 +40,11 @@ export default class SessionLogEditor extends React.Component {
       if (currHeight > prevHeight) {
         requestAnimationFrame(() => {
           modalBody.style.maxHeight = `${prevHeight}px`;
+
           setTimeout(() => {
             modalBody.style.transition = "0.33s";
             modalBody.style.maxHeight = `${currHeight}px`;
+
             setTimeout(() => {
               modalBody.style.maxHeight = null;
               modalBody.style.transition = null;
@@ -50,9 +54,11 @@ export default class SessionLogEditor extends React.Component {
       } else if (currHeight < prevHeight) {
         requestAnimationFrame(() => {
           modalBody.style.minHeight = `${prevHeight}px`;
+
           setTimeout(() => {
             modalBody.style.transition = "0.33s";
             modalBody.style.minHeight = `${currHeight}px`;
+
             setTimeout(() => {
               modalBody.style.minHeight = null;
               modalBody.style.transition = null;
@@ -148,7 +154,7 @@ export default class SessionLogEditor extends React.Component {
       <Modal
         header={
           <>
-            <h1>Registro de Sessão</h1>
+            <h1>Registros de Sessão</h1>
             <h2>{storage.getPatientName(this.props.pid)}</h2>
           </>
         }
@@ -186,8 +192,3 @@ export default class SessionLogEditor extends React.Component {
     );
   }
 }
-
-// Ao alternar o estado do displayForm: salvar height atual
-// componentDidUpdate: se o estado do displayForm alterou, calcule a diferença de altura
-// Se tiver aumentado, defina o maxHeight para o prevHeight, e depois para a altura atual
-// Se tiver diminuído, use o MinHeight.

@@ -9,7 +9,7 @@ export default function DropdownSelect(props) {
 
   useEffect(() => {
     // If there was a click event outside of the element and it is currently displaying the options.
-    if (!selfRef.current.contains(eventTarget) && displayOptions) {
+    if (eventTarget && !selfRef.current.contains(eventTarget) && displayOptions) {
       setDisplayOptions(false);
     }
   });
@@ -26,7 +26,7 @@ export default function DropdownSelect(props) {
           <polygon points="0,0 14,0, 7,7" fill="var(--bg-secondary)" />
         </svg>
       </div>
-      <p>{props.value}</p>
+      <p>{props.value || <>&zwnj;</>}</p>
 
       {displayOptions && (
         <div className="options">

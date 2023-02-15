@@ -15,7 +15,7 @@ export default class RegistrationEditor extends React.Component {
       // When a click event is triggered, the eventTarget is changed, which updates the
       // RegEditorCtx value. The DropdownSelect components gets this value, using useContext.
       // If the component contains the event target and its options is being displayed, it
-      // closes itself, to behave like a HTML Select element.
+      // closes itself like an HTML Select element.
       eventTarget: null,
     };
     if (this.editing) {
@@ -77,7 +77,7 @@ export default class RegistrationEditor extends React.Component {
     return (
       <Modal
         ref={this.modalRef}
-        header={<h1>{this.editing ? "Editar Cadastro" : "Novo Paciente"}</h1>}
+        header={<h1>{this.editing ? "Cadastro" : "Novo Paciente"}</h1>}
         footer={this.getFooter()}
         onClose={this.props.onClose}
         onClick={(e) => this.setState({ eventTarget: e.target })}

@@ -130,7 +130,6 @@ export default class App extends React.Component {
   }
 }
 
-// Animação no registro de sessão
 // Deletar registros de sessões e pacientes
 // Integrar com o Drive (fazer caching)
 // Adicionar opção de anexar documentos no paciente
