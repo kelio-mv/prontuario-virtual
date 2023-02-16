@@ -17,6 +17,7 @@ export default class RegistrationEditor extends React.Component {
       // If the component contains the event target and its options is being displayed, it
       // closes itself like an HTML Select element.
       eventTarget: null,
+      saving: false,
     };
     if (this.editing) {
       this.state.form = storage.getPatient(props.pid).cadastro;
@@ -40,18 +41,21 @@ export default class RegistrationEditor extends React.Component {
   }
 
   getFooter() {
-    const disabled = JSON.stringify(this.state.form) === JSON.stringify(this.initialState);
+    const unchanged = JSON.stringify(this.state.form) === JSON.stringify(this.initialState);
+    const disabled = unchanged || this.state.saving;
+
     return (
       <div
         className={"input-box " + (disabled ? "disabled" : "pointer")}
         onClick={disabled ? () => {} : this.save}
       >
+        {this.state.saving && <div className="loader" />}
         Salvar
       </div>
     );
   }
 
-  save = () => {
+  save = async () => {
     const form = utils.trimObject(this.state.form);
 
     if (!form.nome) {
@@ -59,17 +63,19 @@ export default class RegistrationEditor extends React.Component {
       return;
     }
 
+    this.setState({ saving: true });
+
     if (this.editing) {
       const pdata = storage.getPatient(this.props.pid);
       pdata.cadastro = form;
-      storage.editPatient(this.props.pid, pdata);
-    } else {
+      await storage.editPatient(this.props.pid, pdata);
+    } //
+    else {
       const pid = storage.createPatient();
       const pdata = storage.getPatient(pid);
       pdata.cadastro = form;
-      storage.editPatient(pid, pdata);
+      await storage.editPatient(pid, pdata);
     }
-
     this.modalRef.current.close();
   };
 

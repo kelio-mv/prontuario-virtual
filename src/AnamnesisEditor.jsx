@@ -8,70 +8,78 @@ export default class AnamnesisEditor extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      atendimento: {
-        queixaPrincipal: "",
-        sintomas: "",
+      saving: false,
+      form: {
+        atendimento: {
+          queixaPrincipal: "",
+          sintomas: "",
+        },
+        historicoDoenca: {
+          inicio: "",
+          frequencia: "",
+          intensidade: "",
+          tratamentosAnteriores: "",
+          medicamentos: "",
+        },
+        historicoPessoal: {
+          infancia: "",
+          rotina: "",
+          vicios: "",
+          hobbies: "",
+          trabalho: "",
+          hpp: "",
+        },
+        historicoFamiliar: {
+          pais: "",
+          irmaos: "",
+          conjuge: "",
+          filhos: "",
+          hpp: "",
+        },
+        examePsiquico: {
+          aparencia: "",
+          comportamento: "",
+          atitude: [],
+          memoria: "",
+          inteligencia: "",
+          sensopercepcao: [],
+          pensamento: [],
+          conteudoPensamento: [],
+          conteudoPensamentoOutros: "",
+          afetividade: "",
+          humor: [],
+          humorOutros: "",
+          conscienciaDoenca: [],
+        },
+        hipoteseDiagnostica: "",
       },
-      historicoDoenca: {
-        inicio: "",
-        frequencia: "",
-        intensidade: "",
-        tratamentosAnteriores: "",
-        medicamentos: "",
-      },
-      historicoPessoal: {
-        infancia: "",
-        rotina: "",
-        vicios: "",
-        hobbies: "",
-        trabalho: "",
-        hpp: "",
-      },
-      historicoFamiliar: {
-        pais: "",
-        irmaos: "",
-        conjuge: "",
-        filhos: "",
-        hpp: "",
-      },
-      examePsiquico: {
-        aparencia: "",
-        comportamento: "",
-        atitude: [],
-        memoria: "",
-        inteligencia: "",
-        sensopercepcao: [],
-        pensamento: [],
-        conteudoPensamento: [],
-        conteudoPensamentoOutros: "",
-        afetividade: "",
-        humor: [],
-        humorOutros: "",
-        conscienciaDoenca: [],
-      },
-      hipoteseDiagnostica: "",
     };
-    this.state = { ...this.state, ...storage.getPatient(props.pid).anamnese };
-    this.initialState = { ...this.state };
+    this.state.form = { ...this.state.form, ...storage.getPatient(props.pid).anamnese };
+    this.initialState = { ...this.state.form };
     this.modalRef = React.createRef();
   }
 
   getFooter() {
-    const disabled = JSON.stringify(this.state) === JSON.stringify(this.initialState);
+    const unchanged = JSON.stringify(this.state.form) === JSON.stringify(this.initialState);
+    const disabled = unchanged || this.state.saving;
+
     return (
       <div
         className={"input-box " + (disabled ? "disabled" : "pointer")}
         onClick={disabled ? () => {} : this.save}
       >
+        {this.state.saving && <div className="loader" />}
         Salvar
       </div>
     );
   }
 
-  save = () => {
+  save = async () => {
+    this.setState({ saving: true });
+
     const pdata = storage.getPatient(this.props.pid);
-    pdata.anamnese = utils.trimObject(this.state);
-    storage.editPatient(this.props.pid, pdata);
+    pdata.anamnese = utils.trimObject(this.state.form);
+    await storage.editPatient(this.props.pid, pdata);
     this.modalRef.current.close();
   };
 
@@ -88,7 +96,10 @@ export default class AnamnesisEditor extends React.Component {
         footer={this.getFooter()}
         onClose={this.props.onClose}
       >
-        <AnamnesisForm {...this.state} onChange={this.setState.bind(this)} />
+        <AnamnesisForm
+          {...this.state.form}
+          onChange={(state) => this.setState({ form: { ...this.state.form, ...state } })}
+        />
       </Modal>
     );
   }

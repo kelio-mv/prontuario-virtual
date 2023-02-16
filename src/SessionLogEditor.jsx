@@ -16,6 +16,7 @@ export default class SessionLogEditor extends React.Component {
       sessionLogs: this.getSortedSessionLogs(),
       slid: null,
       displayForm: false,
+      saving: false,
       form: null,
     };
     this.emptyForm = {
@@ -89,15 +90,23 @@ export default class SessionLogEditor extends React.Component {
   getFooter() {
     if (this.state.displayForm) {
       const unchanged = JSON.stringify(this.state.form) === JSON.stringify(this.initialFormState);
+      const disableSaveBtn = unchanged || this.state.saving;
+
       return (
         <>
-          <div className="input-box pointer" onClick={() => this.setState({ displayForm: false })}>
-            {unchanged ? "Voltar" : "Cancelar"}
-          </div>
+          {!this.state.saving && (
+            <div
+              className="input-box pointer"
+              onClick={() => this.setState({ displayForm: false })}
+            >
+              {unchanged ? "Voltar" : "Cancelar"}
+            </div>
+          )}
           <div
-            className={"input-box " + (unchanged ? "disabled" : "pointer")}
-            onClick={unchanged ? () => {} : this.save}
+            className={"input-box " + (disableSaveBtn ? "disabled" : "pointer")}
+            onClick={disableSaveBtn ? () => {} : this.save}
           >
+            {this.state.saving && <div className="loader" />}
             Salvar
           </div>
         </>
@@ -117,7 +126,7 @@ export default class SessionLogEditor extends React.Component {
     }
   }
 
-  save = () => {
+  save = async () => {
     if (!this.state.form.data) {
       alert("Por favor, defina uma data válida!");
       return;
@@ -132,6 +141,8 @@ export default class SessionLogEditor extends React.Component {
       return;
     }
 
+    this.setState({ saving: true });
+
     const pdata = storage.getPatient(this.props.pid);
     // When the user is creating a new Session log
     if (this.state.slid == null) {
@@ -141,11 +152,12 @@ export default class SessionLogEditor extends React.Component {
     else {
       pdata.registrosDeSessao[this.state.slid] = utils.trimObject(this.state.form);
     }
-    storage.editPatient(this.props.pid, pdata);
+    await storage.editPatient(this.props.pid, pdata);
 
     this.setState({
-      sessionLogs: this.getSortedSessionLogs(),
+      saving: false,
       displayForm: false,
+      sessionLogs: this.getSortedSessionLogs(),
     });
   };
 

@@ -5,10 +5,10 @@ import AnamnesisEditor from "./AnamnesisEditor";
 import SessionLogEditor from "./SessionLogEditor";
 import storage from "./storage";
 import utils from "./utils";
-import "./Home.css";
+import "./MainPage.css";
 import "./ModalBodyElements.css";
 
-export default class Home extends React.Component {
+export default class MainPage extends React.Component {
   constructor() {
     super();
     // The "pid" (Patient Identifier) is the index of the selected patient in

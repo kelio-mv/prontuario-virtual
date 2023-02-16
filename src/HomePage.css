@@ -1,0 +1,21 @@
+#home-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+#home-page .app-logo {
+  width: 96px;
+  margin-bottom: 11px;
+}
+
+#home-page h1 {
+  margin-bottom: 2rem;
+  font-size: var(--fs-largest);
+}
+
+#home-page .auth-btn img {
+  opacity: 1;
+}
