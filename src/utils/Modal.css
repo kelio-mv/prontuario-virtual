@@ -1,77 +1,77 @@
 .modal {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgb(0, 0, 0, 0.5);
-    transition: 0.33s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgb(0, 0, 0, 0.5);
+  transition: 0.33s;
 }
 
 .modal.disabled {
-    opacity: 0;
+  opacity: 0;
 }
 
 .modal-content {
-    width: 800px;
-    border-radius: var(--border-radius);
-    box-shadow: 0px 0px 10px rgb(0, 0, 0, 0.5);
-    transition: 0.33s;
+  width: 800px;
+  border-radius: var(--border-radius);
+  box-shadow: 0px 0px 10px rgb(0, 0, 0, 0.5);
+  transition: 0.33s;
 }
 
 .modal-content.disabled {
-    transform: translateY(100vh);
+  transform: translateY(100vh);
 }
 
 .modal-header {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    background: var(--bg-secondary);
-    padding: var(--spacing-small) 0;
-    color: white;
-    border-radius: var(--border-radius) var(--border-radius) 0 0;
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: var(--bg-secondary);
+  padding: var(--spacing-small) 0;
+  color: white;
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+  text-align: center;
 }
 
 .modal-header h1 {
-    font-size: var(--fs-largest);
-    font-weight: 500;
+  font-size: var(--fs-largest);
+  font-weight: 500;
 }
 
 .modal-header h2 {
-    margin-top: var(--spacing-small);
-    padding-top: var(--spacing-small);
-    border-top: 1px solid rgb(255, 255, 255, 0.33);
-    font-size: var(--fs-medium);
-    font-weight: 400;
+  margin-top: var(--spacing-small);
+  padding-top: var(--spacing-small);
+  border-top: 1px solid rgb(255, 255, 255, 0.33);
+  font-size: var(--fs-medium);
+  font-weight: 400;
 }
 
 .modal-header .close-btn {
-    position: absolute;
-    top: var(--spacing-small);
-    right: var(--spacing-small);
-    width: calc(1.25 * var(--fs-largest));
-    filter: invert(1);
-    cursor: pointer;
+  position: absolute;
+  top: var(--spacing-small);
+  right: var(--spacing-small);
+  width: calc(1.25 * var(--fs-largest));
+  filter: invert(1);
+  cursor: pointer;
 }
 
 .modal-body {
-    max-height: 480px;
-    padding: 1.5rem;
-    background: var(--bg-primary-1);
-    overflow: auto;
+  max-height: 480px;
+  padding: 1.5rem;
+  background: var(--bg-primary-1);
+  overflow: auto;
 }
 
 .modal-footer {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    background: var(--bg-primary-3);
-    padding: var(--spacing-small);
-    border-top: var(--border);
-    border-radius: 0 0 var(--border-radius) var(--border-radius);
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  background: var(--bg-primary-3);
+  padding: var(--spacing-small);
+  border-top: 1px solid #bbb;
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
 }

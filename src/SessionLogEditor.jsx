@@ -83,8 +83,8 @@ export default class SessionLogEditor extends React.Component {
       });
   }
 
-  getSessionLog(slid) {
-    return this.getSessionLogs()[slid];
+  getSessionLog(id) {
+    return this.getSessionLogs()[id];
   }
 
   getFooter() {
