@@ -3,6 +3,7 @@ import MedicalRecord from "./MedicalRecord";
 import RegistrationEditor from "./RegistrationEditor";
 import AnamnesisEditor from "./AnamnesisEditor";
 import SessionLogEditor from "./SessionLogEditor";
+import InputBox from "./utils/InputBox";
 import storage from "./storage";
 import utils from "./utils";
 import "./MainPage.css";
@@ -63,7 +64,7 @@ export default class MainPage extends React.Component {
 
         {/* Inputs container */}
         <div id="inputs-container">
-          <div className="input-box grow">
+          <InputBox className="grow" cursorDefault>
             <img src="search.png" alt="search patient" />
             <input
               type="text"
@@ -75,15 +76,12 @@ export default class MainPage extends React.Component {
                 this.setState({ nameFilter: value });
               }}
             />
-          </div>
+          </InputBox>
 
-          <div
-            className="add-patient input-box pointer"
-            onClick={() => this.setState({ displayedModal: "RegistrationEditor" })}
-          >
+          <InputBox onClick={() => this.setState({ displayedModal: "RegistrationEditor" })}>
             <img src="add-patient.png" alt="add patient" />
             <p>Novo Paciente</p>
-          </div>
+          </InputBox>
         </div>
 
         {/* Main */}
@@ -98,24 +96,17 @@ export default class MainPage extends React.Component {
                 {name}
               </p>
               <div className="grow"></div>
-              <div
-                className="input-box pointer"
-                onClick={() => this.setState({ displayedModal: "RegistrationEditor" })}
-              >
+              <InputBox onClick={() => this.setState({ displayedModal: "RegistrationEditor" })}>
                 Cadastro
-              </div>
-              <div
-                className="input-box pointer"
-                onClick={() => this.setState({ displayedModal: "AnamnesisEditor" })}
-              >
+              </InputBox>
+
+              <InputBox onClick={() => this.setState({ displayedModal: "AnamnesisEditor" })}>
                 Anamnese
-              </div>
-              <div
-                className="input-box pointer"
-                onClick={() => this.setState({ displayedModal: "SessionLogEditor" })}
-              >
+              </InputBox>
+
+              <InputBox onClick={() => this.setState({ displayedModal: "SessionLogEditor" })}>
                 Evolução
-              </div>
+              </InputBox>
             </div>
           ))}
         </main>

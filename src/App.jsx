@@ -19,7 +19,6 @@ export default function App() {
 // Adicionar opção de anexar documentos no paciente
 // Tornar pago (R$ 20 / mes)
 
-// Criar componente pro InputBox se for necessário outro botão com state disabled
 // Tornar cidade um DropdownSelect (opcional)
 // Requisitos:
 // - Caixa de pesquisa nativa opcional para filtragem (tanto em cidade como estado)

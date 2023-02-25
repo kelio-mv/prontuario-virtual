@@ -2,6 +2,7 @@ import Modal from "./utils/Modal";
 import RegistrationForm from "./RegistrationForm";
 import AnamnesisForm from "./AnamnesisForm";
 import SessionLogForm from "./SessionLogForm";
+import InputBox from "./utils/InputBox";
 import storage from "./storage";
 
 export default function MedicalRecord(props) {
@@ -19,9 +20,10 @@ export default function MedicalRecord(props) {
     <Modal
       header={<h1>Prontuário</h1>}
       footer={
-        <div className="input-box pointer" onClick={print}>
+        <InputBox onClick={print}>
+          <img src="print.png" alt="print" />
           Imprimir
-        </div>
+        </InputBox>
       }
       onClose={props.onClose}
     >

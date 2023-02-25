@@ -1,6 +1,7 @@
 import React from "react";
 import Modal from "./utils/Modal";
 import SessionLogForm from "./SessionLogForm";
+import InputBox from "./utils/InputBox";
 import storage from "./storage";
 import utils from "./utils";
 
@@ -89,39 +90,32 @@ export default class SessionLogEditor extends React.Component {
 
   getFooter() {
     if (this.state.displayForm) {
-      const unchanged = JSON.stringify(this.state.form) === JSON.stringify(this.initialFormState);
-      const disableSaveBtn = unchanged || this.state.saving;
+      const formIsUnchanged = JSON.stringify(this.state.form) === this.formInitialState;
 
       return (
         <>
           {!this.state.saving && (
-            <div
-              className="input-box pointer"
-              onClick={() => this.setState({ displayForm: false })}
-            >
-              {unchanged ? "Voltar" : "Cancelar"}
-            </div>
+            <InputBox onClick={() => this.setState({ displayForm: false })}>
+              {formIsUnchanged ? "Voltar" : "Cancelar"}
+            </InputBox>
           )}
-          <div
-            className={"input-box " + (disableSaveBtn ? "disabled" : "pointer")}
-            onClick={disableSaveBtn ? () => {} : this.save}
-          >
+          <InputBox onClick={this.save} disabled={formIsUnchanged || this.state.saving}>
             {this.state.saving && <div className="loader" />}
             Salvar
-          </div>
+          </InputBox>
         </>
       );
     } else {
       return (
-        <div
-          className="input-box pointer"
+        <InputBox
           onClick={() => {
-            this.initialFormState = this.emptyForm;
-            this.setState({ displayForm: true, form: this.initialFormState, slid: null });
+            const form = this.emptyForm;
+            this.formInitialState = JSON.stringify(form);
+            this.setState({ displayForm: true, slid: null, form });
           }}
         >
           Novo
-        </div>
+        </InputBox>
       );
     }
   }
@@ -183,20 +177,17 @@ export default class SessionLogEditor extends React.Component {
         {!this.state.displayForm && (
           <div id="session-logs-viewer">
             {this.state.sessionLogs.map((sl) => (
-              <div
+              <InputBox
                 key={sl.id}
-                className="session-log input-box"
+                className="session-log"
                 onClick={() => {
-                  this.initialFormState = this.getSessionLog(sl.id);
-                  this.setState({
-                    displayForm: true,
-                    slid: sl.id,
-                    form: this.initialFormState,
-                  });
+                  const form = this.getSessionLog(sl.id);
+                  this.formInitialState = JSON.stringify(form);
+                  this.setState({ displayForm: true, slid: sl.id, form });
                 }}
               >
                 <p>{sl.data.split("-").reverse().join("/")}</p>
-              </div>
+              </InputBox>
             ))}
           </div>
         )}

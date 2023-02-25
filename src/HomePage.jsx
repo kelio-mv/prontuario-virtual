@@ -1,4 +1,5 @@
 import React from "react";
+import InputBox from "./utils/InputBox";
 import storage from "./storage";
 import "./HomePage.css";
 
@@ -75,10 +76,10 @@ export default class HomePage extends React.Component {
         <img className="app-logo" src="favicon.png" alt="app logo" />
         <h1>Prontuário Virtual</h1>
         {this.state.gapiInited && this.state.gisInited && (
-          <div className="auth-btn input-box pointer" onClick={this.handleAuthClick}>
+          <InputBox className="auth-btn" onClick={this.handleAuthClick}>
             <img src="google-logo.png" alt="google logo" />
             Entrar com o Google
-          </div>
+          </InputBox>
         )}
       </div>
     );

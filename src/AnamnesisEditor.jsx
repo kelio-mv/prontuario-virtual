@@ -1,6 +1,7 @@
 import React from "react";
 import Modal from "./utils/Modal";
 import AnamnesisForm from "./AnamnesisForm";
+import InputBox from "./utils/InputBox";
 import storage from "./storage";
 import utils from "./utils";
 
@@ -55,22 +56,18 @@ export default class AnamnesisEditor extends React.Component {
       },
     };
     this.state.form = { ...this.state.form, ...storage.getPatient(props.pid).anamnese };
-    this.initialState = { ...this.state.form };
+    this.formInitialState = JSON.stringify(this.state.form);
     this.modalRef = React.createRef();
   }
 
   getFooter() {
-    const unchanged = JSON.stringify(this.state.form) === JSON.stringify(this.initialState);
-    const disabled = unchanged || this.state.saving;
+    const formIsUnchanged = JSON.stringify(this.state.form) === this.formInitialState;
 
     return (
-      <div
-        className={"input-box " + (disabled ? "disabled" : "pointer")}
-        onClick={disabled ? () => {} : this.save}
-      >
+      <InputBox onClick={this.save} disabled={formIsUnchanged || this.state.saving}>
         {this.state.saving && <div className="loader" />}
         Salvar
-      </div>
+      </InputBox>
     );
   }
 
