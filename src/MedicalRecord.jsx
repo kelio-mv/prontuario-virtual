@@ -16,7 +16,15 @@ export default function MedicalRecord(props) {
   };
 
   return (
-    <Modal header={<h1>Prontuário</h1>} onClose={props.onClose}>
+    <Modal
+      header={<h1>Prontuário</h1>}
+      footer={
+        <div className="input-box pointer" onClick={print}>
+          Imprimir
+        </div>
+      }
+      onClose={props.onClose}
+    >
       <div id="medical-record">
         <MRSectionHeader text="Cadastro" />
         <RegistrationForm {...patient.cadastro} />

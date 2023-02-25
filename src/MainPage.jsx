@@ -129,17 +129,3 @@ export default class MainPage extends React.Component {
     );
   }
 }
-
-// Deletar registros de sessões e pacientes
-// Integrar com o Drive (fazer caching)
-// Adicionar opção de anexar documentos no paciente
-// Adicionar opção imprimir prontuário
-// Tornar pago (R$ 20 / mes)
-
-// Criar componente pro InputBox se for necessário outro botão com state disabled
-// Tornar cidade um DropdownSelect (opcional)
-// Requisitos:
-// - Caixa de pesquisa nativa opcional para filtragem (tanto em cidade como estado)
-// - Pesquisa lowercase sem acentos
-// - Desabilitar caixa de cidade até que o estado seja selecionado
-// - Ao trocar estado, redefinir a caixa cidade

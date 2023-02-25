@@ -75,3 +75,34 @@
   border-top: 1px solid #bbb;
   border-radius: 0 0 var(--border-radius) var(--border-radius);
 }
+
+/* Media Query for Printing */
+
+@media print {
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .modal {
+    display: block;
+    position: absolute;
+    background: white;
+  }
+
+  .modal-content {
+    width: 100%;
+    box-shadow: none;
+  }
+
+  .modal-header,
+  .modal-footer {
+    display: none;
+  }
+
+  .modal-body {
+    max-height: none;
+    padding: 0;
+    background: none;
+  }
+}
