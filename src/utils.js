@@ -13,6 +13,12 @@ class Utils {
   removeAccents(string) {
     return string.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
   }
+
+  isSessionLogEmpty(sl) {
+    sl = { ...sl };
+    delete sl.data;
+    return Object.values(sl).join("").trim().length === 0;
+  }
 }
 
 export default new Utils();

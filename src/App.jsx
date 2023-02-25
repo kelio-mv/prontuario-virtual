@@ -13,7 +13,6 @@ export default function App() {
   );
 }
 
-// Adicionar ícone de imprimir no botão
 // Verificar comportamento após a expiração do token
 // Deletar registros de sessões e pacientes
 // Adicionar opção de anexar documentos no paciente

@@ -121,10 +121,12 @@ export default class SessionLogEditor extends React.Component {
   }
 
   save = async () => {
+    // If date is invalid
     if (!this.state.form.data) {
       alert("Por favor, defina uma data válida!");
       return;
     }
+    // If there is another Session log with the same date
     if (
       this.getSessionLogs()
         .filter((_, i) => i !== this.state.slid)
@@ -132,6 +134,11 @@ export default class SessionLogEditor extends React.Component {
         .includes(this.state.form.data)
     ) {
       alert("Já existe um registro de sessão nessa data!");
+      return;
+    }
+    // If the user is creating an empty Session log
+    if (this.state.slid === null && utils.isSessionLogEmpty(this.state.form)) {
+      alert("Por favor, preencha pelo menos um campo!");
       return;
     }
 
@@ -142,9 +149,14 @@ export default class SessionLogEditor extends React.Component {
     if (this.state.slid == null) {
       pdata.registrosDeSessao = [...pdata.registrosDeSessao, utils.trimObject(this.state.form)];
     }
-    // When the user is editing a Session log
+    // When the user is editing a Session log...
+    // If the form is empty the Sessiong log will be deleted
     else {
-      pdata.registrosDeSessao[this.state.slid] = utils.trimObject(this.state.form);
+      if (utils.isSessionLogEmpty(this.state.form)) {
+        pdata.registrosDeSessao.splice(this.state.slid, 1);
+      } else {
+        pdata.registrosDeSessao[this.state.slid] = utils.trimObject(this.state.form);
+      }
     }
     await storage.editPatient(this.props.pid, pdata);
 
@@ -169,10 +181,18 @@ export default class SessionLogEditor extends React.Component {
         modalBodyRef={this.modalBodyRef}
       >
         {this.state.displayForm && (
-          <SessionLogForm
-            {...this.state.form}
-            onChange={(state) => this.setState({ form: { ...this.state.form, ...state } })}
-          />
+          <>
+            <SessionLogForm
+              {...this.state.form}
+              onChange={(state) => this.setState({ form: { ...this.state.form, ...state } })}
+            />
+            {this.state.slid !== null && (
+              <div className="del-session-log-tip">
+                <div className="icon">?</div>
+                Para excluir o registro, apague todo seu conteúdo e clique em Salvar.
+              </div>
+            )}
+          </>
         )}
         {!this.state.displayForm && (
           <div id="session-logs-viewer">
@@ -185,6 +205,7 @@ export default class SessionLogEditor extends React.Component {
                   this.formInitialState = JSON.stringify(form);
                   this.setState({ displayForm: true, slid: sl.id, form });
                 }}
+                cursorDefault
               >
                 <p>{sl.data.split("-").reverse().join("/")}</p>
               </InputBox>
