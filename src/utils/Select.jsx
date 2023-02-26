@@ -30,7 +30,7 @@ export default function Select(props) {
   };
 
   return (
-    <div className="select" style={props.noBorder ? { border: "none" } : {}}>
+    <div className="select" style={props.noBorder ? { border: "none", paddingBottom: 0 } : {}}>
       <p className="label">{props.label}</p>
       <div className="options">
         {props.options.map((e, i) => (
@@ -46,7 +46,7 @@ export default function Select(props) {
 }
 
 function CheckBox(props) {
-  return <div className="checkbox">{props.checked && <img src="check.png" alt="check" />}</div>;
+  return <div className="checkbox">{props.checked && <img src="check.png" />}</div>;
 }
 
 function RadioBox(props) {

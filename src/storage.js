@@ -12,9 +12,9 @@ class Storage {
     }
     // If the storage file was not found
     else {
-      this.sfid = await this.createStorageFile();
-      await this.editStorageFile([]);
       this.patients = [];
+      this.sfid = await this.createStorageFile();
+      await this.editStorageFile(this.patients);
     }
   }
 
@@ -83,7 +83,7 @@ class Storage {
   createPatient() {
     // Creates a new patient locally and returns its PID (Patient Identifier).
     // After creating a patient, you must edit their registration immediately or
-    // the App will crash, since it needs their name to render the MainPage.
+    // the App may crash, since it needs their name to render the MainPage.
     const newPatient = { cadastro: {}, anamnese: {}, registrosDeSessao: [] };
     this.patients = [...this.patients, newPatient];
     return this.patients.length - 1;

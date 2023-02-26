@@ -13,8 +13,9 @@ export default function App() {
   );
 }
 
+// Permitir alteração de foto de perfil e de cor
 // Verificar comportamento após a expiração do token
-// Deletar registros de sessões e pacientes
+// Deletar pacientes
 // Adicionar opção de anexar documentos no paciente
 // Tornar pago (R$ 20 / mes)
 

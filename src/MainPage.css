@@ -18,7 +18,8 @@
   display: flex;
   gap: 1rem;
   background: var(--bg-primary-2);
-  padding: 1rem 3rem;
+  padding: 1rem 15%;
+  box-shadow: 0px 2px 4px var(--clr-border);
 }
 
 /* Main Area */

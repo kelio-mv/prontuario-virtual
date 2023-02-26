@@ -73,11 +73,11 @@ export default class HomePage extends React.Component {
   render() {
     return (
       <div id="home-page">
-        <img className="app-logo" src="favicon.png" alt="app logo" />
+        <img className="app-logo" src="favicon.png" />
         <h1>Prontuário Virtual</h1>
         {this.state.gapiInited && this.state.gisInited && (
           <InputBox className="auth-btn" onClick={this.handleAuthClick}>
-            <img src="google-logo.png" alt="google logo" />
+            <img src="google-logo.png" />
             Entrar com o Google
           </InputBox>
         )}

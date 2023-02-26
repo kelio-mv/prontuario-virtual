@@ -59,13 +59,13 @@ export default class MainPage extends React.Component {
       <>
         {/* Header */}
         <header id="header">
-          <img src="profile-picture.png" alt="profile picture" />
+          <img src="profile-picture.png" />
         </header>
 
         {/* Inputs container */}
         <div id="inputs-container">
           <InputBox className="grow" cursorDefault>
-            <img src="search.png" alt="search patient" />
+            <img src="search.png" />
             <input
               type="text"
               placeholder="Pesquisar..."
@@ -79,7 +79,7 @@ export default class MainPage extends React.Component {
           </InputBox>
 
           <InputBox onClick={() => this.setState({ displayedModal: "RegistrationEditor" })}>
-            <img src="add-patient.png" alt="add patient" />
+            <img src="add-patient.png" />
             <p>Novo Paciente</p>
           </InputBox>
         </div>
@@ -88,7 +88,7 @@ export default class MainPage extends React.Component {
         <main id="main-area">
           {this.getFilteredNames().map((name, i) => (
             <div key={i} className="row" onClick={() => this.setState({ pid: i })}>
-              <img src="patient-picture.png" alt="patient" />
+              <img src="patient-picture.png" />
               <p
                 className="name pointer"
                 onClick={() => this.setState({ displayedModal: "MedicalRecord" })}

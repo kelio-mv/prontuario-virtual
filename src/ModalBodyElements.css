@@ -12,16 +12,16 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  margin-bottom: var(--fs-largest);
+  margin-bottom: 1.5rem;
 }
 
 .mr-section-header:not(:first-child) {
-  margin-top: var(--fs-largest);
+  margin-top: 1.5rem;
 }
 
 .mr-section-header .line {
   flex: 1;
-  height: 1px;
+  height: 2px;
   background: var(--clr-border);
 }
 
@@ -33,7 +33,7 @@
 
 #registration-form .row {
   display: flex;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 #registration-form .row:not(:last-child) {

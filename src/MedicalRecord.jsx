@@ -21,7 +21,7 @@ export default function MedicalRecord(props) {
       header={<h1>Prontuário</h1>}
       footer={
         <InputBox onClick={print}>
-          <img src="print.png" alt="print" />
+          <img src="print.png" />
           Imprimir
         </InputBox>
       }

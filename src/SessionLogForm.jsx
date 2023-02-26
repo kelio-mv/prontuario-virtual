@@ -1,7 +1,7 @@
 import TextArea from "./utils/TextArea";
 
 export default function SessionLogForm(props) {
-  // The class usage is due to the multiple forms displayed in the Medical Record
+  // The className usage is due to the multiple forms displayed in the Medical Record
   return (
     <div className="session-log-form">
       <input
