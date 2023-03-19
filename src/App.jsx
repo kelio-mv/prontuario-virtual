@@ -13,7 +13,6 @@ export default function App() {
   );
 }
 
-// Permitir alteração de foto de perfil e de cor
 // Verificar comportamento após a expiração do token
 // Deletar pacientes
 // Adicionar opção de anexar documentos no paciente

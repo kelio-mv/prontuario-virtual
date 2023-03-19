@@ -49,6 +49,10 @@
   box-shadow: none;
 }
 
+#profile-editor .pp-container:hover .pp {
+  filter: blur(2px);
+}
+
 #profile-editor .pp-container:hover .edit-pp {
   display: flex;
 }

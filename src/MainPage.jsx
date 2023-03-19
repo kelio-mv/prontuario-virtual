@@ -75,7 +75,7 @@ export default class MainPage extends React.Component {
       <>
         {/* Header */}
         <header id="header">
-          <img src="profile-picture.png" />
+          <img src={storage.data.profilePicture} />
         </header>
 
         {/* Inputs container */}

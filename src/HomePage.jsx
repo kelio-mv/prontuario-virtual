@@ -60,8 +60,9 @@ export default class HomePage extends React.Component {
       if (resp.error !== undefined) {
         throw resp;
       }
-      // Init storage and go to the MainPage
+      // Init storage, set bg-secondary color and go to the MainPage
       await storage.init();
+      document.documentElement.style.setProperty("--bg-secondary", storage.data.profileColor);
       this.props.onAuth();
     };
     // Prompt the user to select a Google account, if there are multiple accounts saved or
