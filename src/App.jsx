@@ -17,6 +17,7 @@ export default function App() {
 // Verificar comportamento após a expiração do token
 // Deletar pacientes
 // Adicionar opção de anexar documentos no paciente
+// Fazer uma tela inicial mais bonita
 // Tornar pago (R$ 20 / mes)
 
 // Tornar cidade um DropdownSelect (opcional)

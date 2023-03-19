@@ -3,6 +3,7 @@ import MedicalRecord from "./MedicalRecord";
 import RegistrationEditor from "./RegistrationEditor";
 import AnamnesisEditor from "./AnamnesisEditor";
 import SessionLogEditor from "./SessionLogEditor";
+import ProfileEditor from "./ProfileEditor";
 import InputBox from "./utils/InputBox";
 import storage from "./storage";
 import utils from "./utils";
@@ -56,6 +57,9 @@ export default class MainPage extends React.Component {
 
       case "SessionLogEditor":
         return <SessionLogEditor {...args} />;
+
+      case "ProfileEditor":
+        return <ProfileEditor {...args} />;
     }
   }
 
@@ -76,6 +80,10 @@ export default class MainPage extends React.Component {
 
         {/* Inputs container */}
         <div id="inputs-container">
+          <InputBox onClick={() => this.setState({ displayedModal: "RegistrationEditor" })}>
+            <img src="add-patient.png" />
+            <p>Novo Paciente</p>
+          </InputBox>
           <InputBox className="grow" cursorDefault>
             <img src="search.png" />
             <input
@@ -89,10 +97,9 @@ export default class MainPage extends React.Component {
               }}
             />
           </InputBox>
-
-          <InputBox onClick={() => this.setState({ displayedModal: "RegistrationEditor" })}>
-            <img src="add-patient.png" />
-            <p>Novo Paciente</p>
+          <InputBox onClick={() => this.setState({ displayedModal: "ProfileEditor" })}>
+            <img src="edit-profile.png" />
+            Editar Perfil
           </InputBox>
         </div>
 
