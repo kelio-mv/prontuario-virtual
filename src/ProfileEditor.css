@@ -43,6 +43,10 @@
   filter: invert(1) drop-shadow(0 0 4px black);
 }
 
+#profile-editor .pp-container input {
+  display: none;
+}
+
 /* hover events */
 
 #profile-editor .pp-container:hover {

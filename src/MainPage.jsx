@@ -34,13 +34,12 @@ export default class MainPage extends React.Component {
   }
 
   getPatients(nameFilter) {
-    nameFilter = nameFilter || "";
+    nameFilter = nameFilter ? utils.removeAccents(nameFilter).toLowerCase().trim() : "";
     const patients = storage.getAllPatients().map((p, i) => ({ name: p.cadastro.nome, id: i }));
 
     return patients.filter((p) => {
-      p.name = utils.removeAccents(p.name).toLowerCase();
-      nameFilter = utils.removeAccents(nameFilter).toLowerCase().trim();
-      return p.name.includes(nameFilter);
+      const pname = utils.removeAccents(p.name).toLowerCase();
+      return pname.includes(nameFilter);
     });
   }
 
