@@ -48,6 +48,7 @@ export default class ProfileEditor extends React.Component {
         const ctx = canvas.getContext("2d");
         canvas.width = this.pictureSize;
         canvas.height = this.pictureSize;
+        ctx.imageSmoothingQuality = "high";
 
         const size = Math.min(img.width, img.height);
         const x = (img.width - size) / 2;

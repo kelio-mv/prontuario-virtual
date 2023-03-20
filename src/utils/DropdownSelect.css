@@ -22,17 +22,14 @@
 }
 
 .dropdown-select .options p {
-  padding: var(--input-padding);
+  padding: 7px 11px;
 }
 
 .dropdown-select .options p:nth-child(even) {
   background: var(--bg-primary-1);
 }
 
-/* .dropdown-select .options p:not(:last-child) {
-  border-bottom: var(--border);
-} */
-
 .dropdown-select .options p:hover {
-  background: var(--bg-secondary);
+  padding: 6px 10px;
+  border: 1px solid var(--bg-secondary);
 }
