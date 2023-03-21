@@ -74,14 +74,25 @@ export default class HomePage extends React.Component {
   render() {
     return (
       <div id="home-page">
-        <img className="app-logo" src="favicon.png" />
-        <h1>Prontuário Virtual</h1>
-        {this.state.gapiInited && this.state.gisInited && (
-          <InputBox className="auth-btn" onClick={this.handleAuthClick}>
-            <img src="google-logo.png" />
-            Entrar com o Google
-          </InputBox>
-        )}
+        <header>
+          <section>
+            <img className="app-logo" src="favicon.png" />
+            <span className="app-name">Prontuário Virtual</span>
+          </section>
+          {this.state.gapiInited && this.state.gisInited && (
+            <InputBox className="auth-btn" onClick={this.handleAuthClick}>
+              <img src="google-logo.png" />
+              Entrar
+            </InputBox>
+          )}
+        </header>
+        <div className="initial-viewport">
+          <h1>
+            O mais simples aplicativo
+            <br /> de gestão para psicólogos.
+          </h1>
+          <h2>Livre-se dos papéis e tenha mais tempo para focar no que realmente importa</h2>
+        </div>
       </div>
     );
   }

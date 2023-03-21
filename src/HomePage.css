@@ -1,21 +1,63 @@
 #home-page {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   height: 100%;
+  background: url("home-page-bg.png") no-repeat center center/cover;
+  color: white;
+  text-shadow: 1px 1px 5px black;
+}
+
+#home-page header {
+  display: flex;
+  justify-content: space-between;
+  padding: 14px;
+  /* border-bottom: 1px solid rgb(255, 255, 255, 0.2); */
+  box-shadow: 0px 0px 5px black;
+  backdrop-filter: blur(10px);
+}
+
+#home-page header section {
+  display: flex;
+  gap: var(--spacing-small);
+  align-items: center;
 }
 
 #home-page .app-logo {
-  width: 96px;
-  margin-bottom: 11px;
+  width: calc(var(--fs-largest) + 4px);
+  padding: 2px;
+  background: white;
+  border-radius: 50%;
 }
 
-#home-page h1 {
-  margin-bottom: 2rem;
+#home-page .app-name {
   font-size: var(--fs-largest);
+}
+
+#home-page .auth-btn {
+  background: none;
+  box-shadow: none;
+  border-width: 2px;
 }
 
 #home-page .auth-btn img {
   opacity: 1;
+}
+
+#home-page .initial-viewport {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+#home-page .initial-viewport h1 {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+#home-page .initial-viewport h2 {
+  font-size: var(--fs-largest);
+  font-weight: 400;
 }
