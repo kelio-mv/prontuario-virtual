@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  background: url("/home-page-bg.png") no-repeat center center/cover;
+  background: url("/home-page-bg.jpg") no-repeat top center/cover;
   color: white;
   text-shadow: 1px 1px 5px black;
 }
