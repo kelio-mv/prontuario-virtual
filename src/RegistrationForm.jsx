@@ -19,6 +19,8 @@ export default function RegistrationForm(props) {
     return patientAge >= 0 && patientAge <= 120 ? patientAge : "--";
   }
 
+  // This function was disabled temporarily because it doesn't allow users to type
+  // international phone numbers
   function formatPhoneNumber(value) {
     const number = value.replace(/[^0-9]/g, "");
 
@@ -66,7 +68,7 @@ export default function RegistrationForm(props) {
         <TextInput
           label="Telefone"
           value={props.telefone}
-          onChange={(value) => props.onChange({ telefone: formatPhoneNumber(value) })}
+          onChange={(value) => props.onChange({ telefone: value })}
         />
         <TextInput
           label="Profissão"
