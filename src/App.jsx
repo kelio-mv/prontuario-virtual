@@ -18,9 +18,8 @@ export default function App() {
 // Adicionar opção de anexar documentos no paciente
 // Tornar pago (R$ 20 / mes)
 
-// No evento window.onoffline:
 // Exibir "Sem conexão com a Internet" na parte inferior da tela
-//
+// Usar preload em todas as imagens (opcional)
 
 // Tornar cidade um DropdownSelect (opcional)
 // Requisitos:
