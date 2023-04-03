@@ -59,9 +59,8 @@ class Storage {
     return file.result.id;
   }
 
-  editStorageFile(data) {
-    // Returns a promise that is resolved when the upload is done
-    return fetch(`https://www.googleapis.com/upload/drive/v3/files/${this.sfid}`, {
+  async editStorageFile(data) {
+    const response = await fetch(`https://www.googleapis.com/upload/drive/v3/files/${this.sfid}`, {
       method: "PATCH",
       headers: {
         Authorization: `Bearer ${gapi.client.getToken().access_token}`,
@@ -69,6 +68,7 @@ class Storage {
       },
       body: JSON.stringify(data),
     });
+    console.log(response);
   }
 
   getAllPatients() {

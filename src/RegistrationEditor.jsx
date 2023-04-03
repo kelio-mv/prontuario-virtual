@@ -1,7 +1,7 @@
 import React from "react";
 import Modal from "./utils/Modal";
 import RegistrationForm from "./RegistrationForm";
-import InputBox from "./utils/InputBox";
+import SaveButton from "./utils/SaveButton";
 import storage from "./storage";
 import utils from "./utils";
 
@@ -41,17 +41,6 @@ export default class RegistrationEditor extends React.Component {
     this.modalRef = React.createRef();
   }
 
-  getFooter() {
-    const formIsUnchanged = JSON.stringify(this.state.form) === this.formInitialState;
-
-    return (
-      <InputBox onClick={this.save} disabled={formIsUnchanged || this.state.saving}>
-        {this.state.saving && <div className="loader" />}
-        Salvar
-      </InputBox>
-    );
-  }
-
   save = async () => {
     const form = utils.trimObject(this.state.form);
 
@@ -81,7 +70,13 @@ export default class RegistrationEditor extends React.Component {
       <Modal
         ref={this.modalRef}
         header={<h1>{this.editing ? "Cadastro" : "Novo Paciente"}</h1>}
-        footer={this.getFooter()}
+        footer={
+          <SaveButton
+            onClick={this.save}
+            disabled={JSON.stringify(this.state.form) === this.formInitialState}
+            saving={this.state.saving}
+          />
+        }
         onClose={this.props.onClose}
         onClick={(e) => this.setState({ eventTarget: e.target })}
         modalBodyStyle={{ paddingBottom: "6rem", overflow: "visible" }}

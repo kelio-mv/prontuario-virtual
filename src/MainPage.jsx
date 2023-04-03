@@ -10,6 +10,8 @@ import utils from "./utils";
 import "./MainPage.css";
 import "./ModalBodyElements.css";
 
+export const ConnectionStateCtx = React.createContext();
+
 export default class MainPage extends React.Component {
   constructor() {
     super();
@@ -22,11 +24,14 @@ export default class MainPage extends React.Component {
       displayedDropdownId: null,
       displayedModal: null,
       pid: null,
+      online: true,
     };
   }
 
   componentDidMount() {
     window.onclick = () => this.setState({ displayedDropdownId: null });
+    window.ononline = () => this.setState({ online: true });
+    window.onoffline = () => this.setState({ online: false });
   }
 
   componentWillUnmount() {
@@ -80,7 +85,7 @@ export default class MainPage extends React.Component {
         {/* Inputs container */}
         <div id="inputs-container">
           <InputBox onClick={() => this.setState({ displayedModal: "RegistrationEditor" })}>
-            <img src="add-patient.png" />
+            <img src="create.png" />
             <p>Novo Paciente</p>
           </InputBox>
           <InputBox className="grow" cursorDefault>
@@ -154,10 +159,12 @@ export default class MainPage extends React.Component {
         </main>
 
         {/* Modal */}
-        {this.getDisplayedModal({
-          pid: this.state.pid,
-          onClose: this.closeModal,
-        })}
+        <ConnectionStateCtx.Provider value={this.state.online}>
+          {this.getDisplayedModal({
+            pid: this.state.pid,
+            onClose: this.closeModal,
+          })}
+        </ConnectionStateCtx.Provider>
       </>
     );
   }

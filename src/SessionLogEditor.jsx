@@ -2,6 +2,7 @@ import React from "react";
 import Modal from "./utils/Modal";
 import SessionLogForm from "./SessionLogForm";
 import InputBox from "./utils/InputBox";
+import SaveButton from "./utils/SaveButton";
 import storage from "./storage";
 import utils from "./utils";
 
@@ -99,10 +100,7 @@ export default class SessionLogEditor extends React.Component {
               {formIsUnchanged ? "Voltar" : "Cancelar"}
             </InputBox>
           )}
-          <InputBox onClick={this.save} disabled={formIsUnchanged || this.state.saving}>
-            {this.state.saving && <div className="loader" />}
-            Salvar
-          </InputBox>
+          <SaveButton onClick={this.save} disabled={formIsUnchanged} saving={this.state.saving} />
         </>
       );
     } else {
@@ -114,6 +112,7 @@ export default class SessionLogEditor extends React.Component {
             this.setState({ displayForm: true, slid: null, form });
           }}
         >
+          <img src="create.png" />
           Novo
         </InputBox>
       );

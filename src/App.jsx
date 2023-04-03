@@ -18,6 +18,10 @@ export default function App() {
 // Adicionar opção de anexar documentos no paciente
 // Tornar pago (R$ 20 / mes)
 
+// No evento window.onoffline:
+// Exibir "Sem conexão com a Internet" na parte inferior da tela
+//
+
 // Tornar cidade um DropdownSelect (opcional)
 // Requisitos:
 // - Caixa de pesquisa nativa opcional para filtragem (tanto em cidade como estado)

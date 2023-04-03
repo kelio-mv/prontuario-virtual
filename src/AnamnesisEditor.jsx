@@ -1,7 +1,7 @@
 import React from "react";
 import Modal from "./utils/Modal";
 import AnamnesisForm from "./AnamnesisForm";
-import InputBox from "./utils/InputBox";
+import SaveButton from "./utils/SaveButton";
 import storage from "./storage";
 import utils from "./utils";
 
@@ -60,17 +60,6 @@ export default class AnamnesisEditor extends React.Component {
     this.modalRef = React.createRef();
   }
 
-  getFooter() {
-    const formIsUnchanged = JSON.stringify(this.state.form) === this.formInitialState;
-
-    return (
-      <InputBox onClick={this.save} disabled={formIsUnchanged || this.state.saving}>
-        {this.state.saving && <div className="loader" />}
-        Salvar
-      </InputBox>
-    );
-  }
-
   save = async () => {
     this.setState({ saving: true });
 
@@ -90,7 +79,13 @@ export default class AnamnesisEditor extends React.Component {
             <h2>{storage.getPatientName(this.props.pid)}</h2>
           </>
         }
-        footer={this.getFooter()}
+        footer={
+          <SaveButton
+            onClick={this.save}
+            disabled={JSON.stringify(this.state.form) === this.formInitialState}
+            saving={this.state.saving}
+          />
+        }
         onClose={this.props.onClose}
       >
         <AnamnesisForm
