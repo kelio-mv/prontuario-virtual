@@ -81,6 +81,8 @@ textarea {
 .form-input-box {
   padding: var(--input-padding);
   border-bottom: 2px solid var(--bg-secondary);
+  /* The TextArea component is using the hard coded value "2px" to calculate its height.
+  Consider this before changing the border width property */
 }
 
 .form-input-box .label {

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef } from "react";
 import "./TextArea.css";
 
 export default function TextArea(props) {
@@ -7,18 +7,26 @@ export default function TextArea(props) {
     return;
   }
 
-  const [rows, setRows] = useState(props.value.split("\n").length);
+  function updateTextAreaHeight() {
+    // This hard coded value (2) refers to the textarea border width
+    const textArea = textAreaRef.current;
+    textArea.style.height = "0px";
+    textArea.style.height = `${textArea.scrollHeight + 2}px`;
+  }
+
+  useEffect(updateTextAreaHeight, []);
+  const textAreaRef = useRef();
 
   return (
     <div className="text-area">
       <p className="label">{props.label}</p>
       <textarea
+        ref={textAreaRef}
         className="form-input-box"
-        rows={rows}
         value={props.value}
         onChange={(e) => {
           props.onChange(e.target.value);
-          setRows(e.target.value.split("\n").length);
+          updateTextAreaHeight();
         }}
       />
     </div>

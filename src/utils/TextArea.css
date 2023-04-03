@@ -1,13 +1,12 @@
 .text-area:not(:last-child) {
-    margin-bottom: var(--spacing-small);
+  margin-bottom: var(--spacing-small);
 }
 
-
 .text-area .label {
-    color: var(--clr-text-light);
-    font-weight: 500;
+  color: var(--clr-text-light);
+  font-weight: 500;
 }
 
 .text-area textarea {
-    padding: var(--spacing-small);
+  padding: var(--spacing-small);
 }
