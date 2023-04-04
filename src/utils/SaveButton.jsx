@@ -12,7 +12,7 @@ export default function SaveButton(props) {
     <InputBox onClick={props.onClick} disabled={props.disabled || props.saving || !online}>
       {props.saving && <div className="loader" />}
       {!online && <img src="no-connection.png" />}
-      Salvar
+      {online ? "Salvar" : "Sem conexão"}
     </InputBox>
   );
 }

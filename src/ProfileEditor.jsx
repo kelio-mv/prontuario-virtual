@@ -1,6 +1,6 @@
 import React from "react";
 import Modal from "./utils/Modal";
-import InputBox from "./utils/InputBox";
+import SaveButton from "./utils/SaveButton";
 import storage from "./storage";
 import "./ProfileEditor.css";
 
@@ -79,12 +79,7 @@ export default class ProfileEditor extends React.Component {
       <Modal
         ref={this.modalRef}
         header={<h1>Editar Perfil</h1>}
-        footer={
-          <InputBox onClick={this.save} disabled={this.state.saving}>
-            {this.state.saving && <div className="loader" />}
-            Salvar
-          </InputBox>
-        }
+        footer={<SaveButton onClick={this.save} saving={this.state.saving} />}
         onClose={this.props.onClose}
       >
         {/* Profile picture */}
